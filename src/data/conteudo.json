@@ -344,7 +344,6 @@
         "/fotos/sahy-5.jpg",
         "/fotos/sahy-2.jpg"
       ],
-      "video": "/fotos/sahy-video.mp4",
       "tags": [
         { "icon": "waves", "tone": "sea", "label": { "pt": "Mar calmo", "es": "Mar calmo", "en": "Gentle sea" } },
         { "icon": "users", "tone": "leaf", "label": { "pt": "Mais tranquila", "es": "Más tranquila", "en": "Relaxed vibe" } },
