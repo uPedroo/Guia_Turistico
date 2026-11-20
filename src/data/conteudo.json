@@ -136,9 +136,9 @@
         "en": "Full Kitchen"
       },
       "desc": {
-        "pt": "Equipada com geladeira grande, cooktop 4 bocas, micro-ondas, airfryer, cafeteira, pratos, panelas e talheres.",
-        "es": "Equipada con heladera grande, anafe de 4 hornallas, microondas, airfryer, cafetera, platos, ollas y cubiertos.",
-        "en": "Equipped with a full fridge, 4-burner cooktop, microwave, airfryer, coffee maker, dishes, pots, and cutlery."
+        "pt": "Equipada com geladeira grande, cooktop 2 bocas, micro-ondas, airfryer, cafeteira, pratos, panelas e talheres.",
+        "es": "Equipada con heladera grande, anafe de 2 hornallas, microondas, airfryer, cafetera, platos, ollas y cubiertos.",
+        "en": "Equipped with a full fridge, 2-burner cooktop, microwave, airfryer, coffee maker, dishes, pots, and cutlery."
       }
     },
     {
@@ -549,9 +549,9 @@
         "en": "What's in the kitchen for cooking?"
       },
       "a": {
-        "pt": "Geladeira grande, cooktop a gás 4 bocas, micro-ondas, airfryer, cafeteira, assadeira, panelas, pratos, copos e talheres.",
-        "es": "Heladera grande, anafe a gas de 4 hornallas, microondas, airfryer, cafetera, fuente, ollas, platos, vasos y cubiertos.",
-        "en": "Full-size refrigerator, 4-burner gas cooktop, microwave, airfryer, coffee maker, baking pan, pots, dishes, glasses, and cutlery."
+        "pt": "Geladeira grande, cooktop a gás 2 bocas, micro-ondas, airfryer, cafeteira, assadeira, panelas, pratos, copos e talheres.",
+        "es": "Heladera grande, anafe a gas de 2 hornallas, microondas, airfryer, cafetera, fuente, ollas, platos, vasos y cubiertos.",
+        "en": "Full-size refrigerator, 2-burner gas cooktop, microwave, airfryer, coffee maker, baking pan, pots, dishes, glasses, and cutlery."
       }
     }
   ],
