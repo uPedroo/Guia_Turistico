@@ -40,15 +40,3 @@ Basta abrir o arquivo `src/data/conteudo.json`, alterar o texto desejado e salva
 ### Onde ficam as fotos:
 - As fotos exibidas no site ficam na pasta: `public/fotos/`
 - Para adicionar fotos novas de uma praia (ex.: Juquehy, Boiçucanga, Santiago, Toque-Toque), coloque os arquivos `.jpg` dentro de `public/fotos/` e adicione o caminho `"/fotos/nome-da-foto.jpg"` na lista `"photos"` daquela praia dentro de `src/data/conteudo.json`.
-
----
-
-## 📦 Como gerar a versão final para colocar na internet (Hospedagem)
-
-Quando quiser publicar na **Cloudflare Pages**, **Vercel** ou **Netlify**:
-
-```powershell
-npm run build
-```
-
-Isso gera a pasta `dist/` com o site estático super leve e pronto para subir no ar gratuitamente.
