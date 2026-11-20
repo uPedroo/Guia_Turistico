@@ -1,0 +1,19 @@
+# Dependências e build do Astro
+node_modules/
+dist/
+.astro/
+
+# Variáveis de ambiente e arquivos de sistema
+.env
+.env.*
+.DS_Store
+Thumbs.db
+
+# Pastas locais de backup de fotos brutas e arquivos auxiliares (o site usa apenas public/fotos/)
+futuro_ideal_casa/
+fotos_guia_turistico/
+fotos_novas/
+precificacao/
+prototipo_design*.html
+plano_site_guia.md
+MENSAGENS_AIRBNB.txt

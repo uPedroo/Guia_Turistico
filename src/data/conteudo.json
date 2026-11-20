@@ -1,0 +1,576 @@
+{
+  "property": {
+    "name": "Loft Boiçucanga",
+    "subtitle": {
+      "pt": "São Sebastião · Litoral Norte SP",
+      "es": "São Sebastião · Litoral Norte SP",
+      "en": "São Sebastião · North Coast SP"
+    },
+    "airbnbUrl": "https://www.airbnb.com.br/rooms/1591517048996461842",
+    "hostName": "Pedro",
+    "rating": "5,0",
+    "reviewsCount": 4,
+    "distanceBeachMeters": 700,
+    "distanceMarketMeters": 100,
+    "wifi": {
+      "ssid": "Rona",
+      "password": "capeco120583cau",
+      "note": {
+        "pt": "Toque para copiar a senha instantaneamente",
+        "es": "Toca para copiar la contraseña al instante",
+        "en": "Tap to copy the password instantly"
+      }
+    },
+    "schedule": {
+      "checkIn": "14:00",
+      "checkOut": "12:00",
+      "quietHours": "22:00 – 07:00"
+    },
+    "housePhotos": [
+      "/fotos/casa-2.jpg",
+      "/fotos/casa-1.jpg",
+      "/fotos/casa-4.jpg",
+      "/fotos/casa-5.jpg",
+      "/fotos/casa-3.jpg",
+      "/fotos/casa-6.jpg"
+    ]
+  },
+  "basicRules": [
+    {
+      "id": "checkin",
+      "icon": "clock",
+      "tone": "sea",
+      "title": {
+        "pt": "Check-in 14h · Saída 12h",
+        "es": "Check-in 14h · Salida 12h",
+        "en": "Check-in 2 PM · Out 12 PM"
+      },
+      "desc": {
+        "pt": "O caseiro recebe você na chegada e entrega as chaves. Acesso por escada.",
+        "es": "El casero te recibe al llegar y entrega las llaves. Acceso por escalera.",
+        "en": "The caretaker greets you on arrival with the keys. Stair access."
+      }
+    },
+    {
+      "id": "silence",
+      "icon": "moon",
+      "tone": "sea",
+      "title": {
+        "pt": "Silêncio das 22h às 7h",
+        "es": "Silencio de 22h a 7h",
+        "en": "Quiet hours 10 PM – 7 AM"
+      },
+      "desc": {
+        "pt": "Rua residencial super tranquila. Sem festas, eventos ou som alto.",
+        "es": "Calle residencial muy tranquila. Sin fiestas, eventos ni música alta.",
+        "en": "Very peaceful residential street. No parties, events, or loud music."
+      }
+    },
+    {
+      "id": "smoking",
+      "icon": "wind",
+      "tone": "leaf",
+      "title": {
+        "pt": "Não fumar dentro do loft",
+        "es": "No fumar dentro del loft",
+        "en": "No smoking inside"
+      },
+      "desc": {
+        "pt": "Proibido fumar ou usar vape no interior. Permitido apenas no pátio externo.",
+        "es": "Prohibido fumar o vapear adentro. Permitido solo en el patio exterior.",
+        "en": "No smoking or vaping indoors. Allowed only in the outdoor courtyard."
+      }
+    },
+    {
+      "id": "pets",
+      "icon": "users",
+      "tone": "leaf",
+      "title": {
+        "pt": "Não aceitamos pets",
+        "es": "No se aceptan mascotas",
+        "en": "No pets allowed"
+      },
+      "desc": {
+        "pt": "Infelizmente não podemos receber animais de estimação. Pernoite exclusivo para hóspedes da reserva.",
+        "es": "Lamentablemente no podemos recibir mascotas. Pernocte exclusivo para los huéspedes de la reserva.",
+        "en": "Unfortunately we cannot accommodate pets. Overnight stays only for booked guests."
+      }
+    },
+    {
+      "id": "care",
+      "icon": "heart",
+      "tone": "sun",
+      "title": {
+        "pt": "Zelo & Economia",
+        "es": "Cuidado y Ahorro",
+        "en": "Care & Energy Saving"
+      },
+      "desc": {
+        "pt": "Ao sair para a praia, desligue o ar-condicionado, ventilador e luzes.",
+        "es": "Al salir a la playa, apaga el aire acondicionado, ventilador y luces.",
+        "en": "When heading to the beach, turn off the AC, fan, and lights."
+      }
+    }
+  ],
+  "houseGuide": [
+    {
+      "icon": "snowflake",
+      "tone": "sea",
+      "title": {
+        "pt": "Ar-condicionado & Ventilação",
+        "es": "Aire acondicionado y Ventilación",
+        "en": "Air Conditioning & Ventilation"
+      },
+      "desc": {
+        "pt": "O loft conta com ar-condicionado e boa ventilação natural. Mantenha janelas e porta fechadas ao ligar e desligue ao sair.",
+        "es": "El loft cuenta con aire acondicionado y buena ventilación natural. Mantén ventanas y puerta cerradas al usarlo y apágalo al salir.",
+        "en": "The loft has air conditioning and good natural airflow. Keep windows and door closed while in use and turn it off when leaving."
+      }
+    },
+    {
+      "icon": "utensils",
+      "tone": "sun",
+      "title": {
+        "pt": "Cozinha Completa",
+        "es": "Cocina Completa",
+        "en": "Full Kitchen"
+      },
+      "desc": {
+        "pt": "Equipada com geladeira grande, cooktop 4 bocas, micro-ondas, airfryer, cafeteira, pratos, panelas e talheres.",
+        "es": "Equipada con heladera grande, anafe de 4 hornallas, microondas, airfryer, cafetera, platos, ollas y cubiertos.",
+        "en": "Equipped with a full fridge, 4-burner cooktop, microwave, airfryer, coffee maker, dishes, pots, and cutlery."
+      }
+    },
+    {
+      "icon": "tv",
+      "tone": "sea",
+      "title": {
+        "pt": "Smart TV & Trabalho Remoto",
+        "es": "Smart TV y Trabajo Remoto",
+        "en": "Smart TV & Remote Work"
+      },
+      "desc": {
+        "pt": "Smart TV com apps de streaming prontos para conectar sua conta e Wi-Fi rápido para home office.",
+        "es": "Smart TV con apps de streaming listas para tu cuenta y Wi-Fi rápido para teletrabajo.",
+        "en": "Smart TV with streaming apps ready for your account and fast Wi-Fi for remote work."
+      }
+    },
+    {
+      "icon": "car",
+      "tone": "leaf",
+      "title": {
+        "pt": "Estacionamento & Acesso",
+        "es": "Estacionamiento y Acceso",
+        "en": "Parking & Access"
+      },
+      "desc": {
+        "pt": "Estacionamento gratuito no local. O loft fica no andar superior com acesso por escada.",
+        "es": "Estacionamiento gratuito en el lugar. El loft está en la planta alta con acceso por escalera.",
+        "en": "Free on-site parking. The loft is upstairs with stair access."
+      }
+    }
+  ],
+  "nearbyWalk": [
+    {
+      "icon": "shoppingBag",
+      "tone": "leaf",
+      "distance": "100 m · 1 min a pé",
+      "title": {
+        "pt": "Mercado a 100 metros",
+        "es": "Mercado a 100 metros",
+        "en": "Grocery store 100m away"
+      },
+      "desc": {
+        "pt": "Perfeito para comprar gelo, bebidas, pão fresco e itens do dia a dia sem tirar o carro da vaga.",
+        "es": "Perfecto para comprar hielo, bebidas, pan fresco y compras diarias sin usar el auto.",
+        "en": "Perfect for picking up ice, drinks, fresh bread, and daily essentials without driving."
+      }
+    },
+    {
+      "icon": "utensils",
+      "tone": "sun",
+      "distance": "100 m · 1 min a pé",
+      "title": {
+        "pt": "Pizzaria & Sushibar na esquina",
+        "es": "Pizzería y Sushibar en la esquina",
+        "en": "Pizzeria & Sushi bar right nearby"
+      },
+      "desc": {
+        "pt": "Chegou cansado da praia? Tem pizzaria e sushi a 1 minuto de caminhada em rua tranquila.",
+        "es": "¿Llegaste cansado de la playa? Hay pizzería y sushi a 1 minuto caminando en una calle tranquila.",
+        "en": "Tired after the beach? There's a pizzeria and sushi bar a 1-minute walk away on a quiet street."
+      }
+    },
+    {
+      "icon": "waves",
+      "tone": "sea",
+      "distance": "10 min a pé",
+      "title": {
+        "pt": "Praia & Centro de Boiçucanga",
+        "es": "Playa y Centro de Boiçucanga",
+        "en": "Boiçucanga Beach & Center"
+      },
+      "desc": {
+        "pt": "Caminhada plana até a praia, shopping, farmácias, bancos e pôr do sol famoso no mar.",
+        "es": "Caminata llana hasta la playa, centro comercial, farmacias y el famoso atardecer en el mar.",
+        "en": "Flat walk to the beach, shopping, pharmacies, and the famous sunset over the sea."
+      }
+    }
+  ],
+  "places": [
+    {
+      "id": "calhetas",
+      "name": "Praia de Calhetas",
+      "category": {
+        "pt": "Praia · Península",
+        "es": "Playa · Península",
+        "en": "Beach · Peninsula"
+      },
+      "driveTime": "~22 min",
+      "distanceKm": "14 km",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Praia+de+Calhetas+Sao+Sebastiao",
+      "wazeUrl": "https://waze.com/ul?q=Praia%20de%20Calhetas%20Sao%20Sebastiao",
+      "photos": [
+        "/fotos/calhetas-1.jpg",
+        "/fotos/calhetas-2.jpg",
+        "/fotos/calhetas-4.jpg",
+        "/fotos/calhetas-6.jpg",
+        "/fotos/calhetas-3.jpg",
+        "/fotos/calhetas-5.jpg",
+        "/fotos/calhetas-7.jpg"
+      ],
+      "tags": [
+        { "icon": "sparkles", "tone": "sun", "label": { "pt": "Paradisíaca", "es": "Paradisíaca", "en": "Paradise" } },
+        { "icon": "droplet", "tone": "sea", "label": { "pt": "Água cristalina", "es": "Agua cristalina", "en": "Crystal water" } },
+        { "icon": "cooler", "tone": "sun", "label": { "pt": "Leve seu cooler", "es": "Lleva tu cooler", "en": "Bring a cooler" } },
+        { "icon": "mountain", "tone": "leaf", "label": { "pt": "Só entra a pé", "es": "Solo entrada a pie", "en": "Foot entry only" } },
+        { "icon": "car", "tone": "sun", "label": { "pt": "Vá de ônibus (sem vagas)", "es": "Ir en autobús (sin parking)", "en": "Go by bus (no parking)" } }
+      ],
+      "warning": {
+        "pt": "Aconselhável ir de ônibus: não há lugar próximo para estacionar o carro e só entra a pé na praia (fica em condomínio fechado).",
+        "es": "Aconsejable ir en autobús: no hay lugar cercano para estacionar el auto y solo se entra a pie a la playa (es un condominio cerrado).",
+        "en": "Recommended to go by bus: there is no nearby place to park a car and beach access is on foot only (inside a gated community)."
+      },
+      "tip": {
+        "pt": "Praia paradisíaca com uma beleza extraordinária! Como o acesso é por caminhada e lá não existem barracas, leve seu próprio cooler, água, bebidas e petiscos — você não vai se arrepender.",
+        "es": "¡Playa paradisíaca de belleza extraordinaria! Como no hay quioscos en la arena, lleva tu propia conservadora, bebidas y snacks — no te arrepentirás.",
+        "en": "A paradise beach of extraordinary beauty! Because there are no beach shacks, bring your own cooler, drinks, and snacks — you won't regret it."
+      }
+    },
+    {
+      "id": "camburizinho",
+      "name": "Praia de Camburizinho",
+      "category": {
+        "pt": "Praia · Favorita próxima",
+        "es": "Playa · Favorita cercana",
+        "en": "Beach · Nearby favorite"
+      },
+      "driveTime": "~7 min",
+      "distanceKm": "4 km",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Praia+de+Camburizinho+Sao+Sebastiao",
+      "wazeUrl": "https://waze.com/ul?q=Praia%20de%20Camburizinho%20Sao%20Sebastiao",
+      "photos": [
+        "/fotos/camburizinho-2.jpg",
+        "/fotos/camburizinho-1.jpg",
+        "/fotos/camburizinho-3.jpg",
+        "/fotos/camburizinho-5.jpg",
+        "/fotos/camburizinho-4.jpg",
+        "/fotos/camburizinho-6.jpg",
+        "/fotos/camburizinho-7.jpg"
+      ],
+      "tags": [
+        { "icon": "waves", "tone": "sea", "label": { "pt": "Água tranquila", "es": "Agua tranquila", "en": "Calm water" } },
+        { "icon": "umbrella", "tone": "sun", "label": { "pt": "Várias barracas", "es": "Varios quioscos", "en": "Beach service" } },
+        { "icon": "sunset", "tone": "sun", "label": { "pt": "Vista das pedras", "es": "Vista en las rocas", "en": "Scenic rocks" } },
+        { "icon": "smile", "tone": "leaf", "label": { "pt": "Pertinho do loft", "es": "Muy cerca", "en": "Super close" } }
+      ],
+      "tip": {
+        "pt": "A minha favorita bem pertinho de Boiçucanga! Praia muito boa, com várias barracas, água tranquila e as pedras no canto direito que formam piscininhas e têm uma vista linda.",
+        "es": "¡Mi favorita muy cerca de Boiçucanga! Playa excelente, con varios quioscos, agua tranquila y rocas en el canto derecho con una vista hermosa.",
+        "en": "My favorite beach right next to Boiçucanga! Great beach service, calm waters, and rocks on the right corner offering a gorgeous view."
+      }
+    },
+    {
+      "id": "cachoeira",
+      "name": "Cachoeira de Boiçucanga",
+      "category": {
+        "pt": "Cachoeira · Mata Atlântica",
+        "es": "Cascada · Selva Atlántica",
+        "en": "Waterfall · Atlantic Forest"
+      },
+      "driveTime": "~8 min",
+      "distanceKm": "3 km",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Cachoeira+de+Boicucanga+Sao+Sebastiao",
+      "wazeUrl": "https://waze.com/ul?q=Cachoeira%20de%20Boicucanga",
+      "photos": [
+        "/fotos/cachoeira-1.jpg",
+        "/fotos/cachoeira-2.jpg",
+        "/fotos/cachoeira-3.jpg",
+        "/fotos/cachoeira-4.jpg"
+      ],
+      "tags": [
+        { "icon": "droplet", "tone": "sea", "label": { "pt": "Água doce fresca", "es": "Agua dulce fresca", "en": "Fresh river water" } },
+        { "icon": "trees", "tone": "leaf", "label": { "pt": "Muita sombra", "es": "Mucha sombra", "en": "Shaded forest" } },
+        { "icon": "mountain", "tone": "leaf", "label": { "pt": "Trilha na mata", "es": "Sendero natural", "en": "Forest trail" } },
+        { "icon": "sparkles", "tone": "sun", "label": { "pt": "Pós-praia perfeito", "es": "Ideal post-playa", "en": "Great after beach" } }
+      ],
+      "tip": {
+        "pt": "Perfeita para tirar o sal do corpo depois da praia! Água doce cristalina cercada pela Mata Atlântica bem aqui no bairro. Dica: leve repelente e vá com calçado firme.",
+        "es": "¡Perfecta para sacarse la sal después de la playa! Agua dulce cristalina rodeada de selva aquí mismo en el barrio. Lleva repelente.",
+        "en": "Perfect for rinsing off the salt after the beach! Crystal-clear fresh water surrounded by rainforest right in our neighborhood. Bring bug spray."
+      }
+    },
+    {
+      "id": "sahy",
+      "name": "Praia da Barra do Sahy",
+      "category": {
+        "pt": "Praia · Enseada calma",
+        "es": "Playa · Bahía calma",
+        "en": "Beach · Calm bay"
+      },
+      "driveTime": "~18 min",
+      "distanceKm": "11 km",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Praia+da+Barra+do+Sahy+Sao+Sebastiao",
+      "wazeUrl": "https://waze.com/ul?q=Praia%20da%20Barra%20do%20Sahy",
+      "photos": [
+        "/fotos/sahy-6.jpg",
+        "/fotos/sahy-7.jpg",
+        "/fotos/sahy-8.jpg",
+        "/fotos/sahy-9.jpg",
+        "/fotos/sahy-10.jpg",
+        "/fotos/sahy-1.jpg",
+        "/fotos/sahy-3.jpg",
+        "/fotos/sahy-4.jpg",
+        "/fotos/sahy-5.jpg",
+        "/fotos/sahy-2.jpg"
+      ],
+      "video": "/fotos/sahy-video.mp4",
+      "tags": [
+        { "icon": "waves", "tone": "sea", "label": { "pt": "Mar calmo", "es": "Mar calmo", "en": "Gentle sea" } },
+        { "icon": "users", "tone": "leaf", "label": { "pt": "Mais tranquila", "es": "Más tranquila", "en": "Relaxed vibe" } },
+        { "icon": "umbrella", "tone": "sun", "label": { "pt": "Boas barracas", "es": "Buenos quioscos", "en": "Beach shacks" } },
+        { "icon": "smile", "tone": "leaf", "label": { "pt": "Ótima p/ família", "es": "Ideal familias", "en": "Family friendly" } }
+      ],
+      "tip": {
+        "pt": "Praia tranquila, com menos agito, boas barracas e mar super gostoso para nadar. O encontro do rio com o mar no canto da praia rende um passeio incrível.",
+        "es": "Playa tranquila, con menos bullicio, buenos quioscos y un mar delicioso para nadar. El encuentro del río con el mar es hermoso.",
+        "en": "A peaceful beach with a relaxed atmosphere, good beach service, and gentle waters for swimming."
+      }
+    },
+    {
+      "id": "maresias",
+      "name": "Praia de Maresias",
+      "category": {
+        "pt": "Praia · Surf & Gastronomia",
+        "es": "Playa · Surf y Gastronomía",
+        "en": "Beach · Surf & Dining"
+      },
+      "driveTime": "~12 min",
+      "distanceKm": "8 km",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Praia+de+Maresias+Sao+Sebastiao",
+      "wazeUrl": "https://waze.com/ul?q=Praia%20de%20Maresias",
+      "photos": [
+        "/fotos/maresias-1.jpg",
+        "/fotos/maresias-3.jpg",
+        "/fotos/maresias-2.jpg",
+        "/fotos/maresias-4.jpg"
+      ],
+      "video": "/fotos/maresias-video.mp4",
+      "tags": [
+        { "icon": "waves", "tone": "sea", "label": { "pt": "Ondas & Surf", "es": "Olas y Surf", "en": "Surf & Waves" } },
+        { "icon": "umbrella", "tone": "sun", "label": { "pt": "Estrutura completa", "es": "Estructura total", "en": "Full amenities" } },
+        { "icon": "sparkles", "tone": "sun", "label": { "pt": "Areia branca e larga", "es": "Arena blanca", "en": "Wide white sand" } },
+        { "icon": "moon", "tone": "leaf", "label": { "pt": "Bares & Noite", "es": "Bares y Noche", "en": "Bars & Nightlife" } }
+      ],
+      "tip": {
+        "pt": "Vizinha de Boiçucanga, famosa pelo surf, faixa de areia branquinha e ótimos restaurantes e cafés. O Canto do Moreira (lado direito) tem visual espetacular.",
+        "es": "Vecina de Boiçucanga, famosa por el surf, su arena blanca y excelentes restaurantes. El Canto do Moreira tiene una vista espectacular.",
+        "en": "Right next door to Boiçucanga, famous for surfing, wide white sand, and great restaurants and cafes."
+      }
+    },
+    {
+      "id": "santiago",
+      "name": "Praia de Santiago",
+      "category": {
+        "pt": "Praia · Natureza preservada",
+        "es": "Playa · Naturaleza intacta",
+        "en": "Beach · Unspoiled nature"
+      },
+      "driveTime": "~16 min",
+      "distanceKm": "11 km",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Praia+de+Santiago+Sao+Sebastiao",
+      "wazeUrl": "https://waze.com/ul?q=Praia%20de%20Santiago%20Sao%20Sebastiao",
+      "photos": [
+        "/fotos/santiago-1.jpg",
+        "/fotos/santiago-2.jpg",
+        "/fotos/santiago-6.jpg",
+        "/fotos/santiago-3.jpg",
+        "/fotos/santiago-5.jpg",
+        "/fotos/santiago-4.jpg"
+      ],
+      "tags": [
+        { "icon": "trees", "tone": "leaf", "label": { "pt": "Sossego e sombra", "es": "Calma y sombra", "en": "Quiet & shaded" } },
+        { "icon": "droplet", "tone": "sea", "label": { "pt": "Água limpa", "es": "Agua limpia", "en": "Clean water" } },
+        { "icon": "cooler", "tone": "sun", "label": { "pt": "Leve água/lanche", "es": "Lleva agua/snack", "en": "Bring snacks" } }
+      ],
+      "tip": {
+        "pt": "Logo depois de Maresias e Paúba, uma praia super charmosa, silenciosa e arborizada — excelente para quem quer fugir do movimento.",
+        "es": "Justo después de Maresias y Paúba, una playa encantadora, silenciosa y arbolada — ideal para escapar del movimiento.",
+        "en": "Right past Maresias and Paúba, a charming, quiet, tree-lined beach — great for escaping the crowds."
+      }
+    }
+  ],
+  "_places_comentadas_para_quando_tiver_fotos": [
+    {
+      "id": "juquehy",
+      "name": "Praia de Juquehy",
+      "category": {
+        "pt": "Praia · Rasa e espaçosa",
+        "es": "Playa · Baja y amplia",
+        "en": "Beach · Shallow & wide"
+      },
+      "driveTime": "~22 min",
+      "distanceKm": "14 km",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Praia+de+Juquehy+Sao+Sebastiao",
+      "wazeUrl": "https://waze.com/ul?q=Praia%20de%20Juquehy",
+      "photos": [],
+      "tags": [
+        { "icon": "waves", "tone": "sea", "label": { "pt": "Praia rasa", "es": "Playa baja", "en": "Shallow water" } },
+        { "icon": "umbrella", "tone": "sun", "label": { "pt": "Muitas barracas", "es": "Muchos quioscos", "en": "Lots of shacks" } },
+        { "icon": "smile", "tone": "leaf", "label": { "pt": "Ampla e bonita", "es": "Amplia y linda", "en": "Wide & scenic" } }
+      ],
+      "tip": {
+        "pt": "Praia rasa, com muitas barracas, bastante espaço na areia e muito bonita — vale muito a pena conhecer para passar o dia com conforto.",
+        "es": "Playa baja, con muchos quioscos, mucho espacio en la arena y muy bonita — vale la pena conocerla para pasar el día cómodo.",
+        "en": "Shallow waters, plenty of beach service, wide sandy beach, and very pretty — well worth visiting for a comfortable beach day."
+      }
+    },
+    {
+      "id": "boicucanga",
+      "name": "Praia de Boiçucanga",
+      "category": {
+        "pt": "Praia · A 10 min a pé",
+        "es": "Playa · A 10 min a pie",
+        "en": "Beach · 10 min walk"
+      },
+      "driveTime": "10 min a pé",
+      "distanceKm": "700 m",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Praia+de+Boicucanga+Sao+Sebastiao",
+      "wazeUrl": "https://waze.com/ul?q=Praia%20de%20Boicucanga",
+      "photos": [],
+      "tags": [
+        { "icon": "sunset", "tone": "sun", "label": { "pt": "Pôr do sol no mar", "es": "Atardecer en el mar", "en": "Sunset over the sea" } },
+        { "icon": "smile", "tone": "leaf", "label": { "pt": "Vai a pé do loft", "es": "Vas caminando", "en": "Walk from loft" } },
+        { "icon": "umbrella", "tone": "sun", "label": { "pt": "Quiosques & Barcos", "es": "Quioscos y Barcos", "en": "Kiosks & Boats" } }
+      ],
+      "tip": {
+        "pt": "A praia do nosso bairro, dá para ir caminhando em 10 minutos! Uma das poucas do Brasil onde o sol se põe diretamente no mar. No canto esquerdo, junto ao rio, saem passeios de barco.",
+        "es": "¡La playa de nuestro barrio, puedes ir caminando en 10 minutos! Una de las pocas de Brasil donde el sol se pone directamente en el mar.",
+        "en": "Our neighborhood beach, just a 10-minute walk away! One of the few beaches in Brazil where the sun sets directly into the ocean."
+      }
+    },
+    {
+      "id": "toquetoque",
+      "name": "Toque-Toque Pequeno & Grande",
+      "category": {
+        "pt": "Praia · Pôr do sol & Charme",
+        "es": "Playa · Atardecer y Encanto",
+        "en": "Beach · Sunset & Charm"
+      },
+      "driveTime": "~18 min",
+      "distanceKm": "12 km",
+      "mapsUrl": "https://www.google.com/maps/search/?api=1&query=Praia+de+Toque+Toque+Pequeno+Sao+Sebastiao",
+      "wazeUrl": "https://waze.com/ul?q=Toque%20Toque%20Pequeno",
+      "photos": [],
+      "tags": [
+        { "icon": "sunset", "tone": "sun", "label": { "pt": "Pôr do sol incrível", "es": "Atardecer único", "en": "Stunning sunset" } },
+        { "icon": "fish", "tone": "sea", "label": { "pt": "Vila caiçara", "es": "Pueblo costero", "en": "Fishing village" } },
+        { "icon": "sparkles", "tone": "sun", "label": { "pt": "Bons restaurantes", "es": "Buena comida", "en": "Great dining" } }
+      ],
+      "tip": {
+        "pt": "Praias de clima caiçara com vista para a Ilha de Toque-Toque e um dos pores do sol mais bonitos do Litoral Norte. No caminho fica a Cachoeira de Toque-Toque na beira da estrada.",
+        "es": "Playas con encanto local, vista a la Isla de Toque-Toque y uno de los atardeceres más lindos del Litoral Norte.",
+        "en": "Charming coastal village beaches facing Toque-Toque Island with one of the best sunsets on the North Coast."
+      }
+    }
+  ],
+  "faq": [
+    {
+      "q": {
+        "pt": "Tem roupa de cama, travesseiro e toalha?",
+        "es": "¿Hay ropa de cama, almohadas y toallas?",
+        "en": "Are bed linens, pillows, and towels provided?"
+      },
+      "a": {
+        "pt": "Sim! Fornecemos roupa de cama, travesseiros e toalhas para a sua estadia.",
+        "es": "¡Sí! Proporcionamos ropa de cama, almohadas y toallas para tu estadía.",
+        "en": "Yes! We provide bed linens, pillows, and towels for your stay."
+      }
+    },
+    {
+      "q": {
+        "pt": "O loft tem ar-condicionado?",
+        "es": "¿El loft tiene aire acondicionado?",
+        "en": "Does the loft have air conditioning?"
+      },
+      "a": {
+        "pt": "Sim! O loft conta com ar-condicionado, além de ventilador e ótima ventilação natural.",
+        "es": "¡Sí! El loft cuenta con aire acondicionado, además de ventilador y buena ventilación natural.",
+        "en": "Yes! The loft features air conditioning, in addition to a portable fan and great natural airflow."
+      }
+    },
+    {
+      "q": {
+        "pt": "Como funciona a chegada e entrega das chaves?",
+        "es": "¿Cómo funciona la llegada y entrega de llaves?",
+        "en": "How do check-in and key handover work?"
+      },
+      "a": {
+        "pt": "O check-in é a partir das 14:00. Nosso caseiro estará no local para receber você, entregar as chaves e apresentar o espaço.",
+        "es": "El check-in es a partir de las 14:00. Nuestro casero estará en el lugar para recibirte, entregarte las llaves y mostrarte el loft.",
+        "en": "Check-in starts at 2:00 PM. Our caretaker will be on site to welcome you, hand over the keys, and show you around."
+      }
+    },
+    {
+      "q": {
+        "pt": "Dá para ir a pé até a praia e ao mercado?",
+        "es": "¿Se puede ir caminando a la playa y al mercado?",
+        "en": "Can we walk to the beach and grocery store?"
+      },
+      "a": {
+        "pt": "Sim! Mercado, pizzaria e sushibar ficam a apenas 100 metros (1 minuto a pé). A Praia de Boiçucanga fica a 10 minutos a pé.",
+        "es": "¡Sí! Mercado, pizzería y sushibar están a solo 100 metros. La playa de Boiçucanga está a 10 minutos a pie.",
+        "en": "Yes! A grocery store, pizzeria, and sushi bar are just 100 meters away. Boiçucanga Beach is a 10-minute walk."
+      }
+    },
+    {
+      "q": {
+        "pt": "O que tem na cozinha para preparar refeições?",
+        "es": "¿Qué hay en la cocina para cocinar?",
+        "en": "What's in the kitchen for cooking?"
+      },
+      "a": {
+        "pt": "Geladeira grande, cooktop a gás 4 bocas, micro-ondas, airfryer, cafeteira, assadeira, panelas, pratos, copos e talheres.",
+        "es": "Heladera grande, anafe a gas de 4 hornallas, microondas, airfryer, cafetera, fuente, ollas, platos, vasos y cubiertos.",
+        "en": "Full-size refrigerator, 4-burner gas cooktop, microwave, airfryer, coffee maker, baking pan, pots, dishes, glasses, and cutlery."
+      }
+    }
+  ],
+  "reviews": [
+    {
+      "author": "Talita",
+      "date": "Abril 2026",
+      "text": "A acomodação é extremamente confortável e acolhedora. Fui muito bem recebida pelo anfitrião, Pedro, que sempre se mostrou atencioso. O espaço estava impecavelmente limpo, bem organizado e equipado com tudo o que precisávamos!"
+    },
+    {
+      "author": "Erika",
+      "date": "Fevereiro 2026",
+      "text": "Fomos recebidos de forma gentil e receptiva, Pedro e seu pai nos deixaram à vontade no local. Local estava super limpo e organizado, tudo novinho e todo o básico de cozinha. Mercado bem próximo, e a praia nem se fala, Boiçucanga é completa, praia e cachoeira 🫶🏼."
+    },
+    {
+      "author": "Juliana",
+      "date": "Novembro 2026",
+      "text": "Minha estadia foi tranquila e acolhedora."
+    }
+  ]
+}

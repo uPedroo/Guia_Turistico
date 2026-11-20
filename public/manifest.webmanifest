@@ -1,0 +1,16 @@
+{
+  "name": "Loft Boiçucanga · Guia & Estadia",
+  "short_name": "Loft Boiçucanga",
+  "description": "Guia interativo da casa, regras rápidas e melhores praias e cachoeiras de São Sebastião.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#FAF5EC",
+  "theme_color": "#FAF5EC",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}

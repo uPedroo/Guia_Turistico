@@ -1,0 +1,38 @@
+====================================================================
+COMO RODAR O SITE DO LOFT BOIÇUCANGA NO SEU COMPUTADOR
+====================================================================
+
+OPÇÃO 1 (MAIS FÁCIL - 2 CLIQUES):
+---------------------------------
+Dê dois cliques no arquivo "rodar_site.bat" que está nesta pasta
+(C:\Airbnb\casa1). Ele vai abrir uma janela preta e iniciar o site.
+Depois, basta abrir o navegador em:
+http://localhost:4321
+
+
+OPÇÃO 2 (PELO TERMINAL / VS CODE):
+----------------------------------
+1. Abra o PowerShell ou o Terminal do VS Code.
+2. Entre na pasta do projeto:
+   cd C:\Airbnb\casa1
+
+3. Digite o comando abaixo e aperte Enter:
+   npm run dev
+
+4. Abra no seu navegador:
+   http://localhost:4321
+
+   (Para abrir no celular, conecte o celular no mesmo Wi-Fi do PC e
+   use o link "Network" que aparece no terminal, ex: http://192.168.1.117:4321)
+
+5. Para parar o site, clique no terminal e aperte Ctrl + C.
+
+
+ONDE EDITAR AS INFORMAÇÕES DO SITE:
+-----------------------------------
+- Textos, Wi-Fi, regras, praias e dúvidas:
+  Abra o arquivo: C:\Airbnb\casa1\src\data\conteudo.json
+
+- Fotos do site:
+  Ficam na pasta: C:\Airbnb\casa1\public\fotos
+====================================================================

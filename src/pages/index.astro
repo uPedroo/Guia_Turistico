@@ -1,0 +1,1489 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Icon from '../components/Icon.astro';
+import data from '../data/conteudo.json';
+---
+
+<Layout>
+  <!-- Barra superior flutuante em vidro (Glassmorphism) -->
+  <header
+    id="main-header"
+    class="fixed top-0 inset-x-0 z-40 px-4 pt-3 pb-2 transition-all duration-500"
+  >
+    <div class="max-w-5xl mx-auto ag-glass rounded-full px-4 py-2.5 flex items-center justify-between gap-2">
+      <a href="#topo" class="flex items-center gap-2.5 group focus:outline-none">
+        <span class="w-9 h-9 rounded-full bg-sea-soft text-sea flex items-center justify-center transition-transform group-hover:scale-105">
+          <Icon name="waves" size={18} />
+        </span>
+        <div>
+          <span class="font-display text-lg leading-none block text-ink">{data.property.name}</span>
+          <span class="text-xs text-muted block" data-i18n="subtitle">{data.property.subtitle.pt}</span>
+        </div>
+      </a>
+
+      <!-- Seletor de Idioma PT / ES / EN -->
+      <div class="flex items-center bg-sand/70 p-1 rounded-full border border-ink/10 text-xs font-semibold" role="group" aria-label="Idioma">
+        <button type="button" class="lang-btn px-2.5 py-1 rounded-full bg-ink text-surface transition-all" data-lang="pt">PT</button>
+        <button type="button" class="lang-btn px-2.5 py-1 rounded-full text-muted hover:text-ink transition-all" data-lang="es">ES</button>
+        <button type="button" class="lang-btn px-2.5 py-1 rounded-full text-muted hover:text-ink transition-all" data-lang="en">EN</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="topo" class="pb-28">
+    <!-- =========================================================
+         1. ENTRADA IMERSIVA (VISTA AÉREA REAL DO MAR E AREIA):
+            ONDA REAL INDO E VOLTANDO QUE RECUA E SOME NO SCROLL
+         ========================================================= -->
+    <section id="hero-scroll-track" class="relative h-[175vh]">
+      <div
+        id="hero-sticky-stage"
+        class="sticky top-0 h-[100dvh] w-full overflow-hidden flex flex-col items-center justify-center select-none"
+      >
+        <!-- Imagem-fonte pré-carregada para a textura WebGL -->
+        <img
+          id="ocean-tex-source"
+          src="/fotos/onda-aerial.jpg"
+          alt=""
+          class="hidden"
+          decoding="sync"
+        />
+
+        <!-- Canvas WebGL 60fps com fotografia aérea real da onda e espuma na areia -->
+        <canvas
+          id="ocean-canvas"
+          class="absolute inset-0 w-full h-full block pointer-events-none"
+          style="background: url('/fotos/onda-aerial.jpg') center/cover no-repeat;"
+          aria-hidden="true"
+        ></canvas>
+
+        <!-- Conteúdo Central Flutuante sobre a Onda Real -->
+        <div
+          id="hero-content"
+          class="relative z-20 px-6 text-center max-w-2xl mx-auto flex flex-col items-center"
+        >
+          <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-surface/90 backdrop-blur-md border border-ink/10 text-xs font-semibold uppercase tracking-[0.2em] text-sea-ink mb-5 shadow-card">
+            <Icon name="palmtree" size={16} />
+            <span data-i18n="heroBadge">Boiçucanga · São Sebastião</span>
+          </div>
+
+          <h1
+            id="welcome-heading"
+            class="font-display text-6xl sm:text-7xl md:text-8xl text-surface tracking-tight leading-none"
+            style="text-shadow: 0 6px 32px rgba(6, 38, 45, 0.55), 0 2px 6px rgba(6, 38, 45, 0.4);"
+            data-i18n="welcomeTitle"
+          >
+            BEM-VINDO!
+          </h1>
+
+          <p
+            id="welcome-sub"
+            class="mt-4 max-w-lg mx-auto text-base sm:text-lg text-surface font-medium px-5 py-2.5 rounded-2xl backdrop-blur-md border border-white/25"
+            style="background-color: rgba(11, 44, 52, 0.84); text-shadow: 0 1px 3px rgba(0, 0, 0, 0.45); box-shadow: 0 8px 28px rgba(6, 32, 38, 0.28);"
+            data-i18n="welcomeSubtitle"
+          >
+            Role a página para ver a onda recuar e abrir o guia da casa e das praias.
+          </p>
+
+          <!-- Botões rápidos -->
+          <div class="mt-7 flex flex-wrap items-center justify-center gap-3">
+            <a
+              href="#conteudo-guia"
+              class="px-5 py-3 rounded-full bg-sun text-surface font-semibold text-sm shadow-elevated hover:-translate-y-0.5 transition-transform inline-flex items-center gap-2"
+            >
+              <Icon name="check" size={17} />
+              <span data-i18n="btnSeeRules">Regras & Wi-Fi</span>
+            </a>
+            <a
+              href="#praias"
+              class="px-5 py-3 rounded-full bg-surface/95 backdrop-blur-md text-ink border border-ink/15 font-semibold text-sm shadow-card hover:-translate-y-0.5 transition-transform inline-flex items-center gap-2"
+            >
+              <Icon name="waves" size={17} />
+              <span data-i18n="btnSeeBeaches">Guia de Praias</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         CONTEÚDO QUE SURGE QUANDO O MAR E A AREIA RECUAM
+         ========================================================= -->
+    <div id="conteudo-guia" class="relative z-30 -mt-20 pt-6 scroll-mt-16">
+      <!-- Cartões Flutuantes de Acesso Rápido (Wi-Fi 1 Toque + Horários + Distâncias) -->
+      <div class="max-w-5xl mx-auto px-4">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5">
+          <!-- Card 1: Wi-Fi -->
+          <div id="wifi-quick-card" class="ag-card ag-card-interactive p-4 flex items-center justify-between gap-3">
+            <div class="flex items-center gap-3.5 min-w-0">
+              <span class="w-11 h-11 rounded-2xl bg-sea-soft text-sea flex items-center justify-center shrink-0">
+                <Icon name="wifi" size={22} />
+              </span>
+              <div class="min-w-0">
+                <span class="text-xs font-semibold uppercase tracking-wider text-muted block">Wi-Fi da Casa</span>
+                <span class="font-semibold text-ink text-sm truncate block">Rede: {data.property.wifi.ssid}</span>
+                <span class="text-xs text-sea-ink font-medium" id="wifi-pass-display">
+                  Senha: <code class="font-mono bg-sand/80 px-1.5 py-0.5 rounded">{data.property.wifi.password}</code>
+                </span>
+              </div>
+            </div>
+            <button
+              type="button"
+              id="copy-wifi-btn"
+              data-password={data.property.wifi.password}
+              class="px-3.5 py-2 rounded-full bg-sea-soft text-sea-ink hover:bg-sea hover:text-surface font-semibold text-xs transition-colors inline-flex items-center gap-1.5 shrink-0"
+            >
+              <Icon name="copy" size={14} />
+              <span id="copy-wifi-label" data-i18n="copyBtn">Copiar</span>
+            </button>
+          </div>
+
+          <!-- Card 2: Check-in & Check-out -->
+          <div class="ag-card ag-card-interactive p-4 flex items-center gap-3.5">
+            <span class="w-11 h-11 rounded-2xl bg-sun-soft text-sun flex items-center justify-center shrink-0">
+              <Icon name="key" size={22} />
+            </span>
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-muted block" data-i18n="scheduleLabel">Horários</span>
+              <span class="font-semibold text-ink text-sm block">
+                Check-in {data.property.schedule.checkIn} · Out {data.property.schedule.checkOut}
+              </span>
+              <span class="text-xs text-muted block" data-i18n="caretakerNote">Caseiro recebe você na chegada</span>
+            </div>
+          </div>
+
+          <!-- Card 3: Localização a pé -->
+          <div class="ag-card ag-card-interactive p-4 flex items-center gap-3.5">
+            <span class="w-11 h-11 rounded-2xl bg-leaf-soft text-leaf flex items-center justify-center shrink-0">
+              <Icon name="pin" size={22} />
+            </span>
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-muted block" data-i18n="walkLabel">Faz tudo a pé</span>
+              <span class="font-semibold text-ink text-sm block" data-i18n="walkTitle">100m Mercado, Pizza e Sushi</span>
+              <span class="text-xs text-muted block" data-i18n="walkSub">10 min a pé até a Praia de Boiçucanga</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- =========================================================
+           2. SEÇÃO DE REGRAS BÁSICAS DA CASA (Visual, Menos é Mais)
+           ========================================================= -->
+      <section id="regras" class="py-10 md:py-14 scroll-mt-20">
+        <div class="max-w-5xl mx-auto px-4 space-y-6">
+          <div class="text-center max-w-2xl mx-auto space-y-1.5">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sun" data-i18n="rulesEyebrow">
+              Simples & Desenhado
+            </p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink" data-i18n="rulesHeading">
+              Regras Básicas da Casa
+            </h2>
+            <p class="text-sm md:text-base text-muted" data-i18n="rulesSubheading">
+              Tudo o que você precisa saber em 10 segundos para uma estadia perfeita e tranquila.
+            </p>
+          </div>
+
+          <!-- Grade de Regras Visuais com Ícones -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4" id="rules-grid">
+            {data.basicRules.map((rule) => {
+              const bgClass =
+                rule.tone === 'sea'
+                  ? 'bg-sea-soft text-sea-ink'
+                  : rule.tone === 'leaf'
+                  ? 'bg-leaf-soft text-leaf'
+                  : 'bg-sun-soft text-sun';
+              return (
+                <article
+                  class="rule-card ag-card ag-card-interactive p-5 flex items-start gap-4"
+                  data-rule-id={rule.id}
+                >
+                  <span class={`w-12 h-12 rounded-2xl flex items-center justify-center shrink-0 ${bgClass}`}>
+                    <Icon name={rule.icon} size={22} />
+                  </span>
+                  <div class="space-y-1">
+                    <h3 class="font-semibold text-base text-ink rule-title">{rule.title.pt}</h3>
+                    <p class="text-sm text-muted leading-relaxed rule-desc">{rule.desc.pt}</p>
+                  </div>
+                </article>
+              );
+            })}
+          </div>
+
+          <!-- Como funciona o Loft -->
+          <div class="ag-card p-6 space-y-4">
+            <div>
+              <span class="text-xs font-semibold uppercase tracking-wider text-sea-ink" data-i18n="houseHowEyebrow">
+                Conforto & Praticidade
+              </span>
+              <h3 class="font-display text-2xl text-ink" data-i18n="houseHowTitle">
+                Como funciona o Loft
+              </h3>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3.5" id="house-guide-grid">
+              {data.houseGuide.map((item, idx) => {
+                const bgClass =
+                  item.tone === 'sea'
+                    ? 'bg-sea-soft text-sea-ink'
+                    : item.tone === 'leaf'
+                    ? 'bg-leaf-soft text-leaf'
+                    : 'bg-sun-soft text-sun';
+                return (
+                  <div class="p-4 rounded-2xl bg-bg/70 border border-ink/5 space-y-1.5" data-guide-idx={idx}>
+                    <div class="flex items-center gap-2.5">
+                      <span class={`w-8 h-8 rounded-xl flex items-center justify-center shrink-0 ${bgClass}`}>
+                        <Icon name={item.icon} size={17} />
+                      </span>
+                      <h4 class="font-semibold text-sm text-ink guide-title">{item.title.pt}</h4>
+                    </div>
+                    <p class="text-xs text-muted leading-relaxed guide-desc">{item.desc.pt}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           3. CARROSSEL DE PRAIAS & CACHOEIRAS (POLAROIDS SEM TEXTO NA FOTO)
+           ========================================================= -->
+      <section id="praias" class="py-10 md:py-16 scroll-mt-20">
+        <div class="max-w-5xl mx-auto px-4 space-y-6">
+          <div class="text-center max-w-2xl mx-auto space-y-2">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sea-ink" data-i18n="beachesEyebrow">
+              Guia Local de São Sebastião
+            </p>
+            <h2 class="font-display text-3xl md:text-5xl text-ink" data-i18n="beachesHeading">
+              Praias & Cachoeiras
+            </h2>
+            <p class="text-sm md:text-base text-muted" data-i18n="beachesSubheading">
+              No computador, passe o mouse na pilha para abrir o leque. No celular, as fotos já ficam espalhadas: toque numa foto para ampliar ou deslize para trocar de praia.
+            </p>
+          </div>
+
+          <!-- Pílulas rápidas para escolher a praia diretamente -->
+          <div class="flex items-center gap-2 overflow-x-auto pb-2 no-scrollbar justify-start md:justify-center" id="beach-QuickPills">
+            {data.places.map((place, index) => (
+              <button
+                type="button"
+                class={`beach-pill shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all ${
+                  index === 0
+                    ? 'bg-ink text-surface border-ink shadow-sm'
+                    : 'bg-surface text-muted border-ink/10 hover:text-ink'
+                }`}
+                data-place-index={index}
+              >
+                {place.name}
+              </button>
+            ))}
+          </div>
+
+          <!-- Palco principal do Carrossel Polaroid -->
+          <div class="ag-card overflow-hidden">
+            <div class="polaroid-stage" id="polaroid-stage">
+              <button
+                type="button"
+                id="carousel-prev"
+                aria-label="Praia anterior"
+                class="ag-glass absolute left-3 sm:left-5 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full flex items-center justify-center text-ink hover:scale-105 active:scale-95 transition-transform"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m15 18-6-6 6-6"/></svg>
+              </button>
+
+              <button
+                type="button"
+                id="carousel-next"
+                aria-label="Próxima praia"
+                class="ag-glass absolute right-3 sm:right-5 top-1/2 -translate-y-1/2 z-30 w-11 h-11 rounded-full flex items-center justify-center text-ink hover:scale-105 active:scale-95 transition-transform"
+              >
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m9 18 6-6-6-6"/></svg>
+              </button>
+            </div>
+
+            <!-- Indicadores (Pontos) -->
+            <div class="flex justify-center items-center gap-2 pb-3" id="carousel-dots"></div>
+
+            <!-- Informações, Características com Ícones, Dica do Pedro e Botões de Mapa -->
+            <div class="px-5 pb-8 pt-2 text-center max-w-2xl mx-auto" id="place-info-panel"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           4. TUDO A PÉ (100m) & FOTOS REAIS DO LOFT
+           ========================================================= -->
+      <section id="loft" class="py-10 md:py-14 scroll-mt-20">
+        <div class="max-w-5xl mx-auto px-4 space-y-10">
+          <div class="space-y-5">
+            <div class="text-center max-w-xl mx-auto space-y-1">
+              <p class="text-xs font-semibold uppercase tracking-[0.2em] text-leaf" data-i18n="nearbyEyebrow">
+                Conveniência Total
+              </p>
+              <h2 class="font-display text-3xl md:text-4xl text-ink" data-i18n="nearbyHeading">
+                Pertinho de Você (A Pé)
+              </h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4" id="nearby-grid">
+              {data.nearbyWalk.map((item, idx) => {
+                const bgClass =
+                  item.tone === 'sea'
+                    ? 'bg-sea-soft text-sea-ink'
+                    : item.tone === 'leaf'
+                    ? 'bg-leaf-soft text-leaf'
+                    : 'bg-sun-soft text-sun';
+                return (
+                  <div class="ag-card ag-card-interactive p-5 space-y-3" data-nearby-idx={idx}>
+                    <div class="flex items-center justify-between">
+                      <span class={`w-11 h-11 rounded-2xl flex items-center justify-center ${bgClass}`}>
+                        <Icon name={item.icon} size={21} />
+                      </span>
+                      <span class="px-3 py-1 rounded-full bg-sand text-ink font-semibold text-xs">
+                        {item.distance}
+                      </span>
+                    </div>
+                    <h3 class="font-display text-xl text-ink nearby-title">{item.title.pt}</h3>
+                    <p class="text-sm text-muted leading-relaxed nearby-desc">{item.desc.pt}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <!-- Fotos do Loft -->
+          <div class="ag-card p-6 md:p-8 space-y-5">
+            <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-3">
+              <div>
+                <span class="text-xs font-semibold uppercase tracking-[0.2em] text-sea-ink" data-i18n="loftEyebrow">
+                  Nosso Espaço · 35m² em Boiçucanga
+                </span>
+                <h3 class="font-display text-2xl md:text-3xl text-ink mt-1" data-i18n="loftInsideTitle">
+                  O loft por dentro
+                </h3>
+              </div>
+              <a
+                href={data.property.airbnbUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-xs font-semibold text-sea-ink hover:underline inline-flex items-center gap-1"
+                data-i18n="airbnbLinkText"
+              >
+                Ver anúncio oficial no Airbnb →
+              </a>
+            </div>
+
+            <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 gap-3">
+              {data.property.housePhotos.map((src, idx) => (
+                <button
+                  type="button"
+                  class="house-photo-btn group relative rounded-2xl overflow-hidden aspect-[4/3] border border-ink/10 shadow-sm focus:outline-none"
+                  data-photo-src={src}
+                >
+                  <img
+                    src={src}
+                    alt={`Foto do Loft Boiçucanga ${idx + 1}`}
+                    loading="lazy"
+                    class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  />
+                </button>
+              ))}
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-3.5 pt-2">
+              {data.reviews.map((rev) => (
+                <div class="p-4 rounded-2xl bg-bg/80 border border-ink/5 space-y-2">
+                  <div class="flex items-center justify-between text-xs">
+                    <span class="font-semibold text-ink">{rev.author}</span>
+                    <span class="text-sun font-bold">★★★★★</span>
+                  </div>
+                  <p class="text-xs text-muted leading-relaxed">“{rev.text}”</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================================================
+           5. DÚVIDAS FREQUENTES (FAQ)
+           ========================================================= -->
+      <section id="faq" class="py-10 md:py-14 scroll-mt-20">
+        <div class="max-w-3xl mx-auto px-4 space-y-6">
+          <div class="text-center space-y-1.5">
+            <p class="text-xs font-semibold uppercase tracking-[0.2em] text-sun">
+              Respostas Rápidas
+            </p>
+            <h2 class="font-display text-3xl md:text-4xl text-ink" data-i18n="faqHeading">
+              Dúvidas Frequentes
+            </h2>
+          </div>
+
+          <div class="space-y-3" id="faq-list">
+            {data.faq.map((item, idx) => (
+              <details class="ag-card group overflow-hidden" data-faq-idx={idx}>
+                <summary class="px-5 py-4 cursor-pointer list-none flex items-center justify-between gap-4 font-semibold text-ink text-sm md:text-base">
+                  <span class="faq-q">{item.q.pt}</span>
+                  <span class="w-7 h-7 rounded-full bg-sand flex items-center justify-center text-ink shrink-0 transition-transform group-open:rotate-45">
+                    +
+                  </span>
+                </summary>
+                <div class="px-5 pb-4 pt-1 text-sm text-muted leading-relaxed border-t border-ink/5 faq-a">
+                  {item.a.pt}
+                </div>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <!-- Barra de Navegação Inferior Flutuante (Estilo App Mobile) -->
+  <nav
+    aria-label="Navegação rápida"
+    class="fixed bottom-4 inset-x-4 z-40 sm:max-w-md sm:mx-auto ag-glass rounded-full px-3 py-2 flex items-center justify-around shadow-elevated"
+  >
+    <a href="#topo" class="flex flex-col items-center gap-0.5 px-3 py-1 text-xs font-medium text-ink hover:text-sea-ink">
+      <Icon name="waves" size={18} />
+      <span data-i18n="navHome">Início</span>
+    </a>
+    <a href="#regras" class="flex flex-col items-center gap-0.5 px-3 py-1 text-xs font-medium text-ink hover:text-sea-ink">
+      <Icon name="check" size={18} />
+      <span data-i18n="navRules">Regras</span>
+    </a>
+    <a href="#praias" class="flex flex-col items-center gap-0.5 px-3 py-1 text-xs font-semibold text-sun">
+      <Icon name="sunset" size={18} />
+      <span data-i18n="navBeaches">Praias</span>
+    </a>
+    <a href="#loft" class="flex flex-col items-center gap-0.5 px-3 py-1 text-xs font-medium text-ink hover:text-sea-ink">
+      <Icon name="pin" size={18} />
+      <span data-i18n="navLoft">O Loft</span>
+    </a>
+    <a href="#faq" class="flex flex-col items-center gap-0.5 px-3 py-1 text-xs font-medium text-ink hover:text-sea-ink">
+      <Icon name="help" size={18} />
+      <span data-i18n="navFaq">Dúvidas</span>
+    </a>
+  </nav>
+
+  <!-- Lightbox Tela Cheia (em formato Polaroid Limpa, sem texto na foto, com suporte a foto e vídeo) -->
+  <div
+    id="lightbox"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Visualizador de fotos"
+    class="fixed inset-0 z-50 hidden items-center justify-center bg-[#231C18]/85 backdrop-blur-md p-4"
+  >
+    <button
+      type="button"
+      id="lb-close"
+      aria-label="Fechar foto"
+      class="absolute top-4 right-4 w-11 h-11 rounded-full bg-surface/90 text-ink flex items-center justify-center font-bold text-lg shadow-card"
+    >
+      ✕
+    </button>
+
+    <button
+      type="button"
+      id="lb-prev"
+      aria-label="Foto anterior"
+      class="absolute left-3 sm:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-surface/90 text-ink flex items-center justify-center shadow-card"
+    >
+      ‹
+    </button>
+
+    <div class="bg-surface p-3 pb-7 rounded-[4px] shadow-elevated max-w-[92vw] max-h-[85vh] flex flex-col items-center">
+      <img
+        id="lb-img"
+        src=""
+        alt="Foto ampliada"
+        class="max-w-[86vw] sm:max-w-[540px] max-h-[72vh] object-contain rounded-[2px]"
+      />
+      <video
+        id="lb-video"
+        controls
+        playsinline
+        class="hidden max-w-[86vw] sm:max-w-[540px] max-h-[72vh] rounded-[2px]"
+      ></video>
+      <div id="lb-counter" class="mt-2 text-xs font-medium text-muted"></div>
+    </div>
+
+    <button
+      type="button"
+      id="lb-next"
+      aria-label="Próxima foto"
+      class="absolute right-3 sm:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-surface/90 text-ink flex items-center justify-center shadow-card"
+    >
+      ›
+    </button>
+  </div>
+
+  <!-- Dados serializados para interatividade no cliente -->
+  <script id="site-data" type="application/json" set:html={JSON.stringify(data)}></script>
+
+  <script>
+    import gsap from 'gsap';
+    import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // =========================================================================
+    // 1. SHADER WEBGL COM TEXTURA FOTOGRÁFICA AÉREA REAL (/fotos/onda-aerial.jpg)
+    //    Anima a água esmeralda, a espuma rendada e a areia molhada da foto real!
+    // =========================================================================
+    function initPhotorealisticAerialOcean() {
+      const canvas = document.getElementById('ocean-canvas') as HTMLCanvasElement | null;
+      const track = document.getElementById('hero-scroll-track');
+      const heroContent = document.getElementById('hero-content');
+      const scrollIndicator = document.getElementById('scroll-indicator');
+      if (!canvas || !track) return;
+
+      const gl = (canvas.getContext('webgl', { alpha: false, antialias: true, powerPreference: 'low-power' }) ||
+        canvas.getContext('experimental-webgl')) as WebGLRenderingContext | null;
+
+      let scrollProgress = 0;
+      let smoothScroll = 0;
+
+      ScrollTrigger.create({
+        trigger: track,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.75,
+        onUpdate: (self) => {
+          scrollProgress = self.progress;
+          if (heroContent) {
+            if (self.progress <= 0.004) {
+              heroContent.style.transform = '';
+              heroContent.style.opacity = '';
+            } else {
+              const p = Math.min(1, self.progress * 1.35);
+              heroContent.style.transform = `translate3d(0, ${-p * 70}px, 0) scale(${1 + p * 0.10})`;
+              heroContent.style.opacity = String(Math.max(0, 1 - p * 1.2));
+            }
+          }
+        }
+      });
+
+      if (!gl) {
+        canvas.style.background = 'url(/fotos/onda-aerial.jpg) center/cover no-repeat';
+        return;
+      }
+
+      const vertexSrc = `
+        attribute vec2 a_pos;
+        varying vec2 v_uv;
+        void main() {
+          // Flip Y para coordenadas de imagem (0.0 = topo mar profundo, 1.0 = base areia)
+          v_uv = vec2(a_pos.x * 0.5 + 0.5, 0.5 - a_pos.y * 0.5);
+          gl_Position = vec4(a_pos, 0.0, 1.0);
+        }
+      `;
+
+      // Fragment Shader Fotográfico:
+      // Usa a foto real de drone (/fotos/onda-aerial.jpg) dividida em:
+      // - Leito de areia real estacionária na base (que escurece e brilha onde a onda molha)
+      // - Camada de onda + espuma real que avança sobre a areia e recua (swash físico)
+      // - Ondulação interna da água esmeralda, veios de espuma se mexendo e recuo total no scroll!
+      const fragmentSrc = `
+        precision mediump float;
+        varying vec2 v_uv;
+        uniform sampler2D u_tex;
+        uniform float u_time;
+        uniform float u_scroll;
+        uniform vec2 u_res;
+        uniform vec2 u_imgRes;
+
+        // Amostragem espelhada suave nas bordas para nunca esticar pixels da borda
+        vec2 mirrorUv(vec2 uv) {
+          vec2 m = mod(uv, 2.0);
+          return mix(m, 2.0 - m, step(1.0, m));
+        }
+
+        // Mapeamento object-fit: cover preservando proporção real da fotografia
+        vec2 getCoverUv(vec2 uv, vec2 screenRes, vec2 imgRes) {
+          float sAspect = screenRes.x / max(screenRes.y, 1.0);
+          float iAspect = imgRes.x / max(imgRes.y, 1.0);
+          vec2 scale = vec2(1.0);
+          if (sAspect > iAspect) {
+            scale.y = iAspect / sAspect;
+          } else {
+            scale.x = sAspect / iAspect;
+          }
+          // Leve folga (0.92) para permitir o vaivém da onda sem cortar a borda
+          scale *= 0.90;
+          return (uv - 0.5) * scale + vec2(0.5, 0.50);
+        }
+
+        void main() {
+          vec2 cUv = getCoverUv(v_uv, u_res, u_imgRes);
+
+          // Recuo do mar controlado pelo Scroll (0.0 -> 1.0 faz o mar subir e sumir na areia)
+          float scrollRetreat = pow(clamp(u_scroll * 1.15, 0.0, 1.0), 1.25) * 0.88;
+
+          // Ciclo físico suave da onda na areia (calmo e fluido)
+          float t = u_time * 0.54;
+          float swash = sin(t - 0.18 * sin(t)); // -1.0 (recuo) a +1.0 (avanço suave na areia)
+          float swashNorm = swash * 0.5 + 0.5;
+
+          // Ondulação orgânica suave ao longo da faixa de areia (lóbulos da onda)
+          float lobe1 = sin(cUv.x * 6.2831 + t * 0.45) * 0.012;
+          float lobe2 = sin(cUv.x * 15.708 - t * 0.65) * 0.005;
+          float lobe3 = cos(cUv.x * 25.132 + t * 0.85) * 0.0025;
+          float shoreContour = lobe1 + lobe2 + lobe3;
+
+          // Deslocamento vertical da onda indo e voltando sobre a areia
+          float tideShift = swash * 0.048 + shoreContour - scrollRetreat;
+
+          // 1. CAMADA BASE: AREIA REAL ESTACIONÁRIA (amostrada da faixa inferior da foto real)
+          // A areia do chão não se move com a água; ela apenas fica molhada quando a onda passa!
+          float sandSampleY = mix(0.81, 0.96, clamp((cUv.y - 0.52) / 0.48, 0.0, 1.0));
+          vec3 stationarySand = texture2D(u_tex, mirrorUv(vec2(cUv.x, sandSampleY))).rgb;
+
+          // 2. CAMADA DA ONDA E MAR ESMERALDA EM MOVIMENTO
+          float waveY = cUv.y - tideShift;
+
+          // Movimento fluido interno das águas e da espuma (mais suave e natural)
+          float inWater = 1.0 - smoothstep(0.65, 0.78, waveY);
+          float rippleX = (sin(waveY * 14.0 - t * 1.15 + cUv.x * 7.0) * 0.0042 +
+                           cos(waveY * 26.0 + t * 1.45 - cUv.x * 11.0) * 0.002) * inWater;
+          float rippleY = (cos(cUv.x * 10.0 + t * 1.05 + waveY * 12.0) * 0.0048 +
+                           sin(waveY * 18.0 - t * 1.35) * 0.003 * swash) * inWater;
+
+          vec2 waveUv = mirrorUv(vec2(cUv.x + rippleX, waveY + rippleY));
+          vec3 movingWaveTex = texture2D(u_tex, waveUv).rgb;
+
+          // Segunda camada sutil de ondulação na água esmeralda para dar profundidade viva de vídeo
+          vec2 detailUv = mirrorUv(vec2(cUv.x - rippleX * 1.4 + 0.015 * sin(t * 0.4), waveY * 0.96 + 0.012 * cos(t * 0.7)));
+          vec3 detailTex = texture2D(u_tex, detailUv).rgb;
+          float deepWaterMask = 1.0 - smoothstep(0.18, 0.52, waveY);
+          movingWaveTex = mix(movingWaveTex, mix(movingWaveTex, detailTex, 0.32), deepWaterMask);
+
+          // Brilho vivo da espuma branca quando a onda avança
+          float lum = dot(movingWaveTex, vec3(0.299, 0.587, 0.114));
+          float foamHighlight = smoothstep(0.62, 0.88, lum);
+
+          // Máscara que separa a onda/espuma real (waveY < ~0.73) da areia estacionária abaixo
+          // IMPORTANTE GLSL: em smoothstep(edge0, edge1, x), edge0 DEVE ser sempre menor que edge1!
+          float baseLine = 1.0 - smoothstep(0.675, 0.745, waveY);
+          float lacyFoamEdge = (1.0 - smoothstep(0.705, 0.775, waveY)) * smoothstep(0.52, 0.78, lum);
+          float wavePresence = clamp(max(baseLine, lacyFoamEdge * 1.15), 0.0, 1.0);
+
+          // Efeito de AREIA MOLHADA onde a onda acabou de alcançar no pico e recuou
+          float maxReachY = 0.735 + 0.048 + shoreContour - scrollRetreat;
+          float wetTrailZone = (1.0 - smoothstep(maxReachY - 0.09, maxReachY + 0.04, cUv.y)) * (1.0 - wavePresence);
+          // Quando a onda está recuando, a marca de areia molhada e o reflexo do céu ficam mais visíveis
+          float wetIntensity = wetTrailZone * (0.45 + 0.55 * (1.0 - swashNorm));
+          vec3 wetSandLook = stationarySand * mix(1.0, 0.82, wetIntensity);
+          // Reflexo especular suave da água fina escorrendo na areia molhada
+          float waterFilmSheen = wetTrailZone * (1.0 - smoothstep(0.71, 0.79, waveY)) * 0.16;
+          wetSandLook += vec3(0.82, 0.91, 0.92) * waterFilmSheen;
+
+          // Espuma residual fininha (rendada) que dissolve na areia molhada quando a onda puxa de volta
+          vec2 trailUv = mirrorUv(vec2(cUv.x * 1.15 + 0.01 * sin(t), waveY - 0.045 * (1.0 - swashNorm)));
+          float trailLum = dot(texture2D(u_tex, trailUv).rgb, vec3(0.299, 0.587, 0.114));
+          float residualFoam = smoothstep(0.74, 0.92, trailLum) * wetTrailZone * (1.0 - swashNorm) * 0.45;
+          wetSandLook = mix(wetSandLook, vec3(0.98, 0.98, 0.97), residualFoam);
+
+          // Composição da onda fotográfica real sobre a areia real
+          vec3 beachScene = mix(wetSandLook, movingWaveTex, wavePresence);
+          // Realce sutil de contraste e brilho solar na espuma
+          beachScene += vec3(0.03, 0.035, 0.035) * foamHighlight * wavePresence * swashNorm;
+
+          // Transição suave na base da tela e no final do scroll para o fundo #FAF5EC (Paleta C)
+          vec3 siteBgSand = vec3(0.980, 0.961, 0.925); // #FAF5EC
+          float bottomFade = 1.0 - smoothstep(0.84, 0.99, v_uv.y);
+          float scrollFade = 1.0 - smoothstep(0.76, 0.98, u_scroll);
+          vec3 finalColor = mix(siteBgSand, beachScene, bottomFade * scrollFade);
+
+          gl_FragColor = vec4(finalColor, 1.0);
+        }
+      `;
+
+      function compileShader(type: number, source: string) {
+        const shader = gl!.createShader(type)!;
+        gl!.shaderSource(shader, source);
+        gl!.compileShader(shader);
+        if (!gl!.getShaderParameter(shader, gl!.COMPILE_STATUS)) {
+          gl!.deleteShader(shader);
+          return null;
+        }
+        return shader;
+      }
+
+      const vs = compileShader(gl.VERTEX_SHADER, vertexSrc);
+      const fs = compileShader(gl.FRAGMENT_SHADER, fragmentSrc);
+      if (!vs || !fs) return;
+
+      const prog = gl.createProgram()!;
+      gl.attachShader(prog, vs);
+      gl.attachShader(prog, fs);
+      gl.linkProgram(prog);
+      gl.useProgram(prog);
+
+      const buf = gl.createBuffer();
+      gl.bindBuffer(gl.ARRAY_BUFFER, buf);
+      gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([-1, -1, 1, -1, -1, 1, -1, 1, 1, -1, 1, 1]), gl.STATIC_DRAW);
+
+      const posLoc = gl.getAttribLocation(prog, 'a_pos');
+      gl.enableVertexAttribArray(posLoc);
+      gl.vertexAttribPointer(posLoc, 2, gl.FLOAT, false, 0, 0);
+
+      const uTime = gl.getUniformLocation(prog, 'u_time');
+      const uScroll = gl.getUniformLocation(prog, 'u_scroll');
+      const uRes = gl.getUniformLocation(prog, 'u_res');
+      const uImgRes = gl.getUniformLocation(prog, 'u_imgRes');
+
+      // Criar textura WebGL e carregar a foto aérea real (/fotos/onda-aerial.jpg)
+      const tex = gl.createTexture();
+      gl.bindTexture(gl.TEXTURE_2D, tex);
+      // Pixel temporário cor de areia enquanto a foto carrega
+      gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, 1, 1, 0, gl.RGBA, gl.UNSIGNED_BYTE, new Uint8Array([250, 245, 236, 255]));
+
+      let imgWidth = 1200;
+      let imgHeight = 896;
+      let textureLoaded = false;
+
+      function uploadImageToTexture(imageEl: HTMLImageElement) {
+        if (textureLoaded || !imageEl.naturalWidth) return;
+        textureLoaded = true;
+        imgWidth = imageEl.naturalWidth || 1200;
+        imgHeight = imageEl.naturalHeight || 896;
+        gl!.bindTexture(gl!.TEXTURE_2D, tex);
+        gl!.pixelStorei(gl!.UNPACK_FLIP_Y_WEBGL, 0);
+        gl!.texImage2D(gl!.TEXTURE_2D, 0, gl!.RGBA, gl!.RGBA, gl!.UNSIGNED_BYTE, imageEl);
+        gl!.texParameteri(gl!.TEXTURE_2D, gl!.TEXTURE_WRAP_S, gl!.CLAMP_TO_EDGE);
+        gl!.texParameteri(gl!.TEXTURE_2D, gl!.TEXTURE_WRAP_T, gl!.CLAMP_TO_EDGE);
+        gl!.texParameteri(gl!.TEXTURE_2D, gl!.TEXTURE_MIN_FILTER, gl!.LINEAR);
+        gl!.texParameteri(gl!.TEXTURE_2D, gl!.TEXTURE_MAG_FILTER, gl!.LINEAR);
+      }
+
+      const domImg = document.getElementById('ocean-tex-source') as HTMLImageElement | null;
+      if (domImg && domImg.complete && domImg.naturalWidth > 0) {
+        uploadImageToTexture(domImg);
+      } else if (domImg) {
+        domImg.addEventListener('load', () => uploadImageToTexture(domImg));
+      }
+
+      const img = new Image();
+      img.onload = () => uploadImageToTexture(img);
+      img.src = '/fotos/onda-aerial.jpg';
+      if (img.complete && img.naturalWidth > 0) {
+        uploadImageToTexture(img);
+      }
+
+      function resizeCanvas() {
+        const maxDpr = window.innerWidth < 768 ? 1.5 : 2.0;
+        const dpr = Math.min(window.devicePixelRatio || 1, maxDpr);
+        const w = Math.floor(canvas!.clientWidth * dpr);
+        const h = Math.floor(canvas!.clientHeight * dpr);
+        if (canvas!.width !== w || canvas!.height !== h) {
+          canvas!.width = w;
+          canvas!.height = h;
+          gl!.viewport(0, 0, w, h);
+        }
+      }
+
+      resizeCanvas();
+      window.addEventListener('resize', resizeCanvas);
+
+      let rafId = 0;
+      let isVisible = true;
+      const startTime = performance.now();
+
+      function renderFrame(now: number) {
+        if (!isVisible) return;
+        if (!textureLoaded && domImg && domImg.complete && domImg.naturalWidth > 0) {
+          uploadImageToTexture(domImg);
+        }
+        if (textureLoaded) {
+          const elapsed = (now - startTime) * 0.001;
+          smoothScroll += (scrollProgress - smoothScroll) * 0.09;
+          gl!.uniform1f(uTime, elapsed);
+          gl!.uniform1f(uScroll, smoothScroll);
+          gl!.uniform2f(uRes, canvas!.width, canvas!.height);
+          gl!.uniform2f(uImgRes, imgWidth, imgHeight);
+          gl!.drawArrays(gl!.TRIANGLES, 0, 6);
+        }
+        rafId = requestAnimationFrame(renderFrame);
+      }
+
+      // Pausa automaticamente quando sai da tela para economizar 100% de bateria no celular
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              if (!isVisible) {
+                isVisible = true;
+                rafId = requestAnimationFrame(renderFrame);
+              }
+            } else {
+              isVisible = false;
+              cancelAnimationFrame(rafId);
+            }
+          });
+        },
+        { threshold: 0.01 }
+      );
+      observer.observe(track);
+
+      rafId = requestAnimationFrame(renderFrame);
+    }
+
+    initPhotorealisticAerialOcean();
+
+    // =========================================================================
+    // 2. DADOS DO GUIA, CARROSSEL DE POLAROIDS E TRADUÇÃO PT/ES/EN
+    // =========================================================================
+    const rawData = document.getElementById('site-data')?.textContent || '{}';
+    const SITE = JSON.parse(rawData);
+
+    const UI_TEXT: Record<string, Record<string, string>> = {
+      pt: {
+        subtitle: 'São Sebastião · Litoral Norte SP',
+        heroBadge: 'Boiçucanga · São Sebastião',
+        welcomeTitle: 'BEM-VINDO!',
+        welcomeSubtitle: 'Role a página para ver a onda recuar e abrir o guia da casa e das praias.',
+        scrollHint: 'Role para entrar',
+        btnSeeRules: 'Regras & Wi-Fi',
+        btnSeeBeaches: 'Guia de Praias',
+        copyBtn: 'Copiar',
+        copiedBtn: 'Copiado! ✓',
+        scheduleLabel: 'Horários',
+        caretakerNote: 'Caseiro recebe você na chegada',
+        walkLabel: 'Faz tudo a pé',
+        walkTitle: '100m Mercado, Pizza e Sushi',
+        walkSub: '10 min a pé até a Praia de Boiçucanga',
+        rulesEyebrow: 'Simples & Desenhado',
+        rulesHeading: 'Regras Básicas da Casa',
+        rulesSubheading: 'Tudo o que você precisa saber em 10 segundos para uma estadia perfeita e tranquila.',
+        houseHowEyebrow: 'Conforto & Praticidade',
+        houseHowTitle: 'Como funciona o Loft',
+        beachesEyebrow: 'Guia Local de São Sebastião',
+        beachesHeading: 'Praias & Cachoeiras',
+        beachesSubheading: 'No computador, passe o mouse na pilha para abrir o leque. No celular, as fotos já ficam espalhadas: toque numa foto para ampliar ou deslize para trocar de praia.',
+        nearbyEyebrow: 'Conveniência Total',
+        nearbyHeading: 'Pertinho de Você',
+        loftEyebrow: 'Nosso Espaço · 35m² em Boiçucanga',
+        loftInsideTitle: 'O loft por dentro',
+        airbnbLinkText: 'Ver anúncio oficial no Airbnb →',
+        faqHeading: 'Dúvidas Frequentes',
+        navHome: 'Início',
+        navRules: 'Regras',
+        navBeaches: 'Praias',
+        navLoft: 'O Loft',
+        navFaq: 'Dúvidas',
+        photoSoon: 'Foto em breve',
+        openMaps: 'Google Maps',
+        openWaze: 'Ir com Waze',
+        watchVideo: 'Ver vídeo da praia',
+        allPhotosBtn: 'Ver todas as fotos'
+      },
+      es: {
+        subtitle: 'São Sebastião · Litoral Norte SP',
+        heroBadge: 'Boiçucanga · São Sebastião',
+        welcomeTitle: '¡BIENVENIDO!',
+        welcomeSubtitle: 'Desliza la página para ver la ola retroceder y abrir la guía de la casa y las playas.',
+        btnSeeRules: 'Reglas y Wi-Fi',
+        btnSeeBeaches: 'Guía de Playas',
+        copyBtn: 'Copiar',
+        copiedBtn: '¡Copiado! ✓',
+        scheduleLabel: 'Horarios',
+        caretakerNote: 'El casero te recibe al llegar',
+        walkLabel: 'Todo a pie',
+        walkTitle: '100m Mercado, Pizza y Sushi',
+        walkSub: '10 min a pie hasta la Playa de Boiçucanga',
+        rulesEyebrow: 'Simple y Visual',
+        rulesHeading: 'Reglas Básicas de la Casa',
+        rulesSubheading: 'Todo lo que necesitas saber en 10 segundos para una estadía perfecta y tranquila.',
+        houseHowEyebrow: 'Confort y Practicidad',
+        houseHowTitle: 'Cómo funciona el Loft',
+        beachesEyebrow: 'Guía Local de São Sebastião',
+        beachesHeading: 'Playas y Cascadas',
+        beachesSubheading: 'En computadora, pasa el mouse para abrir las fotos. En el celular, las fotos ya están desplegadas: toca una foto para ampliar o desliza para cambiar de playa.',
+        nearbyEyebrow: 'Comodidad Total',
+        nearbyHeading: 'Muy Cerca de Ti',
+        loftEyebrow: 'Nuestro Espacio · 35m² en Boiçucanga',
+        loftInsideTitle: 'El loft por dentro',
+        airbnbLinkText: 'Ver anuncio oficial en Airbnb →',
+        faqHeading: 'Preguntas Frecuentes',
+        navHome: 'Inicio',
+        navRules: 'Reglas',
+        navBeaches: 'Playas',
+        navLoft: 'El Loft',
+        navFaq: 'Dudas',
+        photoSoon: 'Foto pronto',
+        openMaps: 'Google Maps',
+        openWaze: 'Ir con Waze',
+        watchVideo: 'Ver video de la playa',
+        allPhotosBtn: 'Ver todas las fotos'
+      },
+      en: {
+        subtitle: 'São Sebastião · North Coast SP',
+        heroBadge: 'Boiçucanga · São Sebastião',
+        welcomeTitle: 'WELCOME!',
+        welcomeSubtitle: 'Scroll the page to see the wave recede and open the house and beach guide.',
+        btnSeeRules: 'Rules & Wi-Fi',
+        btnSeeBeaches: 'Beach Guide',
+        copyBtn: 'Copy',
+        copiedBtn: 'Copied! ✓',
+        scheduleLabel: 'Schedule',
+        caretakerNote: 'Caretaker greets you on arrival',
+        walkLabel: 'Walk everywhere',
+        walkTitle: '100m Grocery, Pizza & Sushi',
+        walkSub: '10 min walk to Boiçucanga Beach',
+        rulesEyebrow: 'Simple & Visual',
+        rulesHeading: 'Basic House Rules',
+        rulesSubheading: 'Everything you need to know in 10 seconds for a smooth, relaxing stay.',
+        houseHowEyebrow: 'Comfort & Convenience',
+        houseHowTitle: 'How the Loft Works',
+        beachesEyebrow: 'São Sebastião Local Guide',
+        beachesHeading: 'Beaches & Waterfalls',
+        beachesSubheading: 'On desktop, hover the stack to fan out photos. On mobile, photos are already spread out: tap any photo to zoom or swipe to switch beaches.',
+        nearbyEyebrow: 'Total Convenience',
+        nearbyHeading: 'Right Nearby',
+        loftEyebrow: 'Our Space · 35m² in Boiçucanga',
+        loftInsideTitle: 'Inside the loft',
+        airbnbLinkText: 'View official listing on Airbnb →',
+        faqHeading: 'Frequently Asked Questions',
+        navHome: 'Home',
+        navRules: 'Rules',
+        navBeaches: 'Beaches',
+        navLoft: 'The Loft',
+        navFaq: 'FAQ',
+        photoSoon: 'Photo coming soon',
+        openMaps: 'Google Maps',
+        openWaze: 'Go with Waze',
+        watchVideo: 'Watch beach video',
+        allPhotosBtn: 'View all photos'
+      }
+    };
+
+    const SVG_PATHS: Record<string, string> = {
+      waves: '<path d="M2 6c.6.5 1.2 1 2.5 1C7 7 7 5 9.5 5c2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 12c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/><path d="M2 18c.6.5 1.2 1 2.5 1 2.5 0 2.5-2 5-2 2.6 0 2.4 2 5 2 2.5 0 2.5-2 5-2 1.3 0 1.9.5 2.5 1"/>',
+      umbrella: '<path d="M22 12a10.06 10.06 1 0 0-20 0Z"/><path d="M12 12v8a2 2 0 0 0 4 0"/><path d="M12 2v1"/>',
+      sparkles: '<path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/>',
+      droplet: '<path d="M12 22a7 7 0 0 0 7-7c0-2-1-3.9-3-5.5s-3.5-4-4-6.5c-.5 2.5-2 4.9-4 6.5C6 11.1 5 13 5 15a7 7 0 0 0 7 7z"/>',
+      fish: '<path d="M6.5 12c.94-3.46 4.94-6 8.5-6 3.56 0 6.06 2.54 7 6-.94 3.47-3.44 6-7 6s-7.56-2.53-8.5-6Z"/><path d="M18 12v.5"/><path d="M16 17.93a9.77 9.77 0 0 1 0-11.86"/><path d="M7 10.67C7 8 5.58 5.97 2.73 5.5c-1 1.5-1 5 .23 6.5-1.24 1.5-1.24 5-.23 6.5C5.58 18.03 7 16 7 13.33"/>',
+      cooler: '<rect x="3" y="8" width="18" height="12" rx="2"/><path d="M3 12h18"/><path d="M8 8V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/>',
+      mountain: '<path d="m8 3 4 8 5-5 5 15H2L8 3z"/>',
+      sunset: '<path d="M12 10V2"/><path d="m4.93 10.93 1.41 1.41"/><path d="M2 18h2"/><path d="M20 18h2"/><path d="m19.07 10.93-1.41 1.41"/><path d="M22 22H2"/><path d="m16 6-4 4-4-4"/><path d="M16 18a4 4 0 0 0-8 0"/>',
+      trees: '<path d="M10 10v.2A3 3 0 0 1 8.9 16H5a3 3 0 0 1-1-5.8V10a3 3 0 0 1 6 0Z"/><path d="M7 16v6"/><path d="M13 19v3"/><path d="M12 19h8.3a1 1 0 0 0 .7-1.7L18 14h.3a1 1 0 0 0 .7-1.7L16 9h.2a1 1 0 0 0 .8-1.7L13 3l-1.4 1.5"/>',
+      smile: '<circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" x2="9.01" y1="9" y2="9"/><line x1="15" x2="15.01" y1="9" y2="9"/>',
+      users: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>',
+      moon: '<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>',
+      car: '<path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.4 2.9A3.7 3.7 0 0 0 2 12v4c0 .6.4 1 1 1h2"/><circle cx="7" cy="17" r="2"/><path d="M9 17h6"/><circle cx="17" cy="17" r="2"/>',
+      pin: '<path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/>',
+      camera: '<path d="M14.5 4h-5L7 7H4a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-3l-2.5-3z"/><circle cx="12" cy="13" r="3"/>',
+      play: '<polygon points="6 3 20 12 6 21 6 3"/>'
+    };
+
+    const renderSvg = (name: string, size = 17) =>
+      `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${SVG_PATHS[name] || SVG_PATHS.sparkles}</svg>`;
+
+    let currentLang = 'pt';
+    let activePlaceIndex = 0;
+    let swiped = false;
+
+    const REST_POS = [
+      { x: -38, y: 14, r: -8 },
+      { x: 42, y: 4, r: 7 },
+      { x: -2, y: -22, r: -3 },
+      { x: 6, y: 42, r: 4 }
+    ];
+    const DESKTOP_FAN_POS = [
+      { x: -128, y: -8, r: -13 },
+      { x: 128, y: -6, r: 12 },
+      { x: -42, y: -42, r: -4 },
+      { x: 46, y: 38, r: 5 }
+    ];
+    const MOBILE_SPREAD_POS = [
+      { x: -80, y: -92, r: -5 },
+      { x: 82, y: -86, r: 4 },
+      { x: -78, y: 88, r: 3 },
+      { x: 82, y: 94, r: -4 }
+    ];
+
+    const isTouchOrMobile = () =>
+      window.matchMedia('(hover: none)').matches || window.innerWidth < 640;
+
+    const stage = document.getElementById('polaroid-stage')!;
+    const dotsContainer = document.getElementById('carousel-dots')!;
+    const infoPanel = document.getElementById('place-info-panel')!;
+
+    const stackElements: HTMLElement[] = SITE.places.map((place: any, placeIdx: number) => {
+      const stackEl = document.createElement('div');
+      stackEl.className = 'polaroid-stack';
+      stackEl.dataset.index = String(placeIdx);
+
+      const photos: string[] = (place.photos || []).slice(0, 4);
+      const cardsData: Array<{ src?: string; placeholder?: boolean; photoIndex: number }> = photos.map(
+        (src, idx) => ({ src, photoIndex: idx })
+      );
+      while (cardsData.length < 3) {
+        cardsData.push({ placeholder: true, photoIndex: cardsData.length });
+      }
+
+      cardsData.forEach((card, k) => {
+        const pol = document.createElement('div');
+        pol.className = 'polaroid-card' + (card.placeholder ? ' is-placeholder' : '');
+        pol.dataset.k = String(k);
+        pol.style.zIndex = String(k + 1);
+
+        if (card.placeholder) {
+          pol.innerHTML = `
+            <div class="h-[138px] sm:h-[156px] rounded-[2px] bg-sand/70 flex flex-col items-center justify-center gap-2 text-muted text-xs px-2 text-center">
+              ${renderSvg('camera', 24)}
+              <span class="ph-label">${UI_TEXT[currentLang].photoSoon}</span>
+            </div>
+          `;
+        } else {
+          pol.innerHTML = `<img src="${card.src}" alt="${place.name} - foto ${k + 1}" loading="lazy" />`;
+          const imgEl = pol.querySelector('img')!;
+          imgEl.addEventListener('load', () => {
+            if (imgEl.naturalWidth > imgEl.naturalHeight * 1.1) {
+              pol.classList.add('is-landscape');
+            }
+          });
+
+          pol.addEventListener('click', (e) => {
+            if (swiped) return;
+            if (Number(stackEl.dataset.index) === activePlaceIndex && stackEl.classList.contains('is-fanned')) {
+              e.stopPropagation();
+              openLightbox(placeIdx, card.photoIndex);
+            }
+          });
+        }
+
+        pol.addEventListener('mouseenter', () => {
+          if (stackEl.classList.contains('is-fanned') && !isTouchOrMobile()) {
+            liftCard(pol, k, true);
+          }
+        });
+        pol.addEventListener('mouseleave', () => {
+          if (stackEl.classList.contains('is-fanned') && !isTouchOrMobile()) {
+            liftCard(pol, k, false);
+          }
+        });
+
+        stackEl.appendChild(pol);
+      });
+
+      stackEl.addEventListener('mouseenter', () => {
+        if (Number(stackEl.dataset.index) === activePlaceIndex && !isTouchOrMobile()) {
+          setStackFan(stackEl, true);
+        }
+      });
+      stackEl.addEventListener('mouseleave', () => {
+        if (!isTouchOrMobile()) {
+          setStackFan(stackEl, false);
+        }
+      });
+      stackEl.addEventListener('click', () => {
+        if (swiped) return;
+        const idx = Number(stackEl.dataset.index);
+        if (idx !== activePlaceIndex) {
+          goToPlace(idx);
+        }
+      });
+
+      stage.appendChild(stackEl);
+      return stackEl;
+    });
+
+    SITE.places.forEach((place: any, idx: number) => {
+      const dot = document.createElement('button');
+      dot.type = 'button';
+      dot.setAttribute('aria-label', place.name);
+      dot.className = 'h-2 rounded-full transition-all duration-300 bg-sand-deep w-2';
+      dot.addEventListener('click', () => goToPlace(idx));
+      dotsContainer.appendChild(dot);
+    });
+
+    function formatTransform(p: { x: number; y: number; r: number }, extra = '') {
+      return `translate(-50%, -50%) translate3d(${p.x}px, ${p.y}px, 0) rotate(${p.r}deg) ${extra}`;
+    }
+
+    function positionCards(stackEl: HTMLElement, fanned: boolean) {
+      const coords = fanned ? (isTouchOrMobile() ? MOBILE_SPREAD_POS : DESKTOP_FAN_POS) : REST_POS;
+      stackEl.querySelectorAll<HTMLElement>('.polaroid-card').forEach((card, k) => {
+        const p = coords[k % 4];
+        card.style.transform = formatTransform(p);
+        card.style.zIndex = String(k + 1);
+      });
+    }
+
+    function setStackFan(stackEl: HTMLElement, fanned: boolean) {
+      stackEl.classList.toggle('is-fanned', fanned);
+      positionCards(stackEl, fanned);
+    }
+
+    function liftCard(cardEl: HTMLElement, k: number, lift: boolean) {
+      const p = DESKTOP_FAN_POS[k % 4];
+      if (lift) {
+        cardEl.style.transform = `translate(-50%, -50%) translate3d(${p.x * 1.05}px, ${p.y - 14}px, 20px) rotate(0deg) scale(1.15)`;
+        cardEl.style.zIndex = '30';
+      } else {
+        cardEl.style.transform = formatTransform(p);
+        cardEl.style.zIndex = String(k + 1);
+      }
+    }
+
+    function renderActivePlaceInfo() {
+      const place = SITE.places[activePlaceIndex];
+      const t = UI_TEXT[currentLang];
+
+      const tagsHtml = (place.tags || [])
+        .map((tag: any) => {
+          const toneClasses =
+            tag.tone === 'sea'
+              ? 'bg-sea-soft text-sea-ink'
+              : tag.tone === 'leaf'
+              ? 'bg-leaf-soft text-leaf'
+              : 'bg-sun-soft text-sun';
+          return `
+            <span class="inline-flex items-center gap-2 pl-2 pr-3.5 py-1.5 rounded-full bg-surface border border-ink/10 text-xs sm:text-sm font-medium text-ink shadow-sm">
+              <span class="w-7 h-7 rounded-full flex items-center justify-center ${toneClasses}">
+                ${renderSvg(tag.icon, 16)}
+              </span>
+              <span>${tag.label[currentLang] || tag.label.pt}</span>
+            </span>
+          `;
+        })
+        .join('');
+
+      const hasAllPhotos = (place.photos || []).length > 0;
+      const videoButtonHtml = place.video
+        ? `<button type="button" id="open-place-video" class="px-4 py-2.5 rounded-full bg-sea-soft text-sea-ink font-semibold text-xs sm:text-sm inline-flex items-center gap-2 hover:bg-sea hover:text-surface transition-colors">
+            ${renderSvg('play', 15)}
+            <span>${t.watchVideo}</span>
+          </button>`
+        : '';
+
+      const allPhotosButtonHtml =
+        (place.photos || []).length > 4
+          ? `<button type="button" id="open-all-photos" class="px-4 py-2.5 rounded-full bg-sand/80 text-ink font-semibold text-xs sm:text-sm inline-flex items-center gap-2 hover:bg-sand-deep transition-colors">
+              ${renderSvg('camera', 15)}
+              <span>${t.allPhotosBtn} (${place.photos.length})</span>
+            </button>`
+          : '';
+
+      const warningHtml = place.warning
+        ? `<div class="max-w-xl mx-auto rounded-2xl bg-sun-soft/80 border border-sun/30 px-4 py-3 text-xs sm:text-sm text-ink font-medium leading-relaxed">
+            <strong class="text-sun font-bold">⚠️ Atenção:</strong> ${place.warning[currentLang] || place.warning.pt}
+          </div>`
+        : '';
+
+      infoPanel.innerHTML = `
+        <div class="space-y-4">
+          <div class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-muted">
+            <span>${place.category[currentLang] || place.category.pt}</span>
+            <span>·</span>
+            <span class="inline-flex items-center gap-1 text-sea-ink">
+              ${renderSvg('car', 14)}
+              ${place.driveTime} (${place.distanceKm})
+            </span>
+          </div>
+
+          <h3 class="font-display text-3xl md:text-4xl text-ink">${place.name}</h3>
+
+          <div class="flex flex-wrap items-center justify-center gap-2 pt-1">
+            ${tagsHtml}
+          </div>
+
+          ${warningHtml}
+
+          <p class="text-sm md:text-base text-muted max-w-xl mx-auto leading-relaxed bg-bg/80 border border-ink/5 rounded-2xl p-4">
+            “${place.tip[currentLang] || place.tip.pt}”
+          </p>
+
+          <div class="flex flex-wrap items-center justify-center gap-2.5 pt-1">
+            <a
+              href="${place.mapsUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-5 py-2.5 rounded-full bg-sun text-surface font-semibold text-xs sm:text-sm shadow-sm hover:-translate-y-0.5 transition-transform inline-flex items-center gap-2"
+            >
+              ${renderSvg('pin', 16)}
+              <span>${t.openMaps}</span>
+            </a>
+            <a
+              href="${place.wazeUrl}"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="px-5 py-2.5 rounded-full bg-surface text-ink border border-ink/15 font-semibold text-xs sm:text-sm hover:-translate-y-0.5 transition-transform inline-flex items-center gap-2"
+            >
+              ${renderSvg('car', 16)}
+              <span>${t.openWaze}</span>
+            </a>
+            ${videoButtonHtml}
+            ${allPhotosButtonHtml}
+          </div>
+        </div>
+      `;
+
+      if (place.video) {
+        document.getElementById('open-place-video')?.addEventListener('click', () => {
+          openVideoLightbox(place.video);
+        });
+      }
+      if (hasAllPhotos && place.photos.length > 4) {
+        document.getElementById('open-all-photos')?.addEventListener('click', () => {
+          openLightbox(activePlaceIndex, 0);
+        });
+      }
+    }
+
+    function updateCarouselLayout() {
+      const stageWidth = stage.clientWidth;
+      const mobile = isTouchOrMobile();
+      const gap = mobile ? stageWidth * 0.80 : Math.max(260, Math.min(stageWidth * 0.48, 400));
+      const total = stackElements.length;
+
+      stackElements.forEach((stackEl, i) => {
+        let diff = i - activePlaceIndex;
+        if (diff > total / 2) diff -= total;
+        if (diff < -total / 2) diff += total;
+
+        const isActive = diff === 0;
+        const scale = isActive ? 1 : 0.66;
+        const opacity = Math.abs(diff) > 1 ? 0 : isActive ? 1 : 0.5;
+
+        stackEl.style.transform = `translate3d(${diff * gap}px, 0, 0) scale(${scale})`;
+        stackEl.style.opacity = String(opacity);
+        stackEl.style.zIndex = String(15 - Math.abs(diff));
+        stackEl.style.pointerEvents = Math.abs(diff) > 1 ? 'none' : 'auto';
+        stackEl.classList.toggle('is-active', isActive);
+
+        if (isActive && mobile) {
+          setStackFan(stackEl, true);
+        } else {
+          setStackFan(stackEl, false);
+        }
+      });
+
+      dotsContainer.querySelectorAll('button').forEach((dot, i) => {
+        if (i === activePlaceIndex) {
+          dot.className = 'h-2 rounded-full transition-all duration-300 bg-sea w-7';
+        } else {
+          dot.className = 'h-2 rounded-full transition-all duration-300 bg-sand-deep w-2';
+        }
+      });
+
+      document.querySelectorAll<HTMLButtonElement>('.beach-pill').forEach((pill, i) => {
+        if (i === activePlaceIndex) {
+          pill.className = 'beach-pill shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all bg-ink text-surface border-ink shadow-sm';
+        } else {
+          pill.className = 'beach-pill shrink-0 px-3.5 py-1.5 rounded-full text-xs font-semibold border transition-all bg-surface text-muted border-ink/10 hover:text-ink';
+        }
+      });
+
+      renderActivePlaceInfo();
+    }
+
+    function goToPlace(index: number) {
+      const total = stackElements.length;
+      activePlaceIndex = (index + total) % total;
+      updateCarouselLayout();
+    }
+
+    document.getElementById('carousel-prev')?.addEventListener('click', () => goToPlace(activePlaceIndex - 1));
+    document.getElementById('carousel-next')?.addEventListener('click', () => goToPlace(activePlaceIndex + 1));
+
+    document.querySelectorAll<HTMLButtonElement>('.beach-pill').forEach((pill) => {
+      pill.addEventListener('click', () => {
+        goToPlace(Number(pill.dataset.placeIndex));
+      });
+    });
+
+    let pointerStartX: number | null = null;
+    stage.addEventListener('pointerdown', (e) => {
+      pointerStartX = e.clientX;
+      swiped = false;
+    });
+    stage.addEventListener('pointerup', (e) => {
+      if (pointerStartX === null) return;
+      const dx = e.clientX - pointerStartX;
+      if (Math.abs(dx) > 48) {
+        swiped = true;
+        goToPlace(activePlaceIndex + (dx < 0 ? 1 : -1));
+        setTimeout(() => {
+          swiped = false;
+        }, 60);
+      }
+      pointerStartX = null;
+    });
+
+    window.addEventListener('resize', updateCarouselLayout);
+
+    // Lightbox
+    const lightbox = document.getElementById('lightbox')!;
+    const lbImg = document.getElementById('lb-img') as HTMLImageElement;
+    const lbVideo = document.getElementById('lb-video') as HTMLVideoElement;
+    const lbCounter = document.getElementById('lb-counter')!;
+    let lbPhotosList: string[] = [];
+    let lbCurrentPhotoIdx = 0;
+
+    function showLightboxImage() {
+      lbVideo.pause();
+      lbVideo.classList.add('hidden');
+      lbImg.classList.remove('hidden');
+      lbImg.src = lbPhotosList[lbCurrentPhotoIdx];
+      lbCounter.textContent = `${lbCurrentPhotoIdx + 1} / ${lbPhotosList.length}`;
+    }
+
+    function openLightbox(placeIdx: number, photoIdx: number) {
+      const photos = SITE.places[placeIdx]?.photos || [];
+      if (!photos.length) return;
+      lbPhotosList = photos;
+      lbCurrentPhotoIdx = photoIdx;
+      showLightboxImage();
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+    }
+
+    function openCustomPhotosLightbox(photos: string[], startIdx: number) {
+      lbPhotosList = photos;
+      lbCurrentPhotoIdx = startIdx;
+      showLightboxImage();
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+    }
+
+    function openVideoLightbox(videoSrc: string) {
+      lbImg.classList.add('hidden');
+      lbVideo.classList.remove('hidden');
+      lbVideo.src = videoSrc;
+      lbCounter.textContent = SITE.places[activePlaceIndex].name;
+      lightbox.classList.remove('hidden');
+      lightbox.classList.add('flex');
+      lbVideo.play().catch(() => {});
+    }
+
+    function closeLightbox() {
+      lbVideo.pause();
+      lbVideo.src = '';
+      lightbox.classList.add('hidden');
+      lightbox.classList.remove('flex');
+    }
+
+    document.getElementById('lb-close')?.addEventListener('click', closeLightbox);
+    document.getElementById('lb-prev')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!lbPhotosList.length) return;
+      lbCurrentPhotoIdx = (lbCurrentPhotoIdx - 1 + lbPhotosList.length) % lbPhotosList.length;
+      showLightboxImage();
+    });
+    document.getElementById('lb-next')?.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (!lbPhotosList.length) return;
+      lbCurrentPhotoIdx = (lbCurrentPhotoIdx + 1) % lbPhotosList.length;
+      showLightboxImage();
+    });
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) closeLightbox();
+    });
+
+    document.querySelectorAll<HTMLButtonElement>('.house-photo-btn').forEach((btn, idx) => {
+      btn.addEventListener('click', () => {
+        openCustomPhotosLightbox(SITE.property.housePhotos, idx);
+      });
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (!lightbox.classList.contains('hidden')) {
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') document.getElementById('lb-prev')?.click();
+        if (e.key === 'ArrowRight') document.getElementById('lb-next')?.click();
+      } else {
+        if (e.key === 'ArrowLeft') goToPlace(activePlaceIndex - 1);
+        if (e.key === 'ArrowRight') goToPlace(activePlaceIndex + 1);
+      }
+    });
+
+    // Copiar senha do Wi-Fi com 1 toque
+    const copyWifiBtn = document.getElementById('copy-wifi-btn');
+    const copyWifiLabel = document.getElementById('copy-wifi-label');
+    copyWifiBtn?.addEventListener('click', async () => {
+      const pass = copyWifiBtn.getAttribute('data-password') || '';
+      try {
+        await navigator.clipboard.writeText(pass);
+      } catch {}
+      if (copyWifiLabel) {
+        copyWifiLabel.textContent = UI_TEXT[currentLang].copiedBtn;
+        setTimeout(() => {
+          copyWifiLabel.textContent = UI_TEXT[currentLang].copyBtn;
+        }, 2200);
+      }
+    });
+
+    // Troca de Idioma (PT / ES / EN)
+    function setLanguage(lang: string) {
+      currentLang = lang;
+      const t = UI_TEXT[lang];
+
+      document.querySelectorAll<HTMLElement>('[data-i18n]').forEach((el) => {
+        const key = el.dataset.i18n!;
+        if (t[key]) el.textContent = t[key];
+      });
+
+      document.querySelectorAll<HTMLElement>('.rule-card').forEach((card, idx) => {
+        const rule = SITE.basicRules[idx];
+        if (!rule) return;
+        const titleEl = card.querySelector('.rule-title');
+        const descEl = card.querySelector('.rule-desc');
+        if (titleEl) titleEl.textContent = rule.title[lang];
+        if (descEl) descEl.textContent = rule.desc[lang];
+      });
+
+      document.querySelectorAll<HTMLElement>('[data-guide-idx]').forEach((card) => {
+        const idx = Number(card.dataset.guideIdx);
+        const item = SITE.houseGuide[idx];
+        if (!item) return;
+        const titleEl = card.querySelector('.guide-title');
+        const descEl = card.querySelector('.guide-desc');
+        if (titleEl) titleEl.textContent = item.title[lang];
+        if (descEl) descEl.textContent = item.desc[lang];
+      });
+
+      document.querySelectorAll<HTMLElement>('[data-nearby-idx]').forEach((card) => {
+        const idx = Number(card.dataset.nearbyIdx);
+        const item = SITE.nearbyWalk[idx];
+        if (!item) return;
+        const titleEl = card.querySelector('.nearby-title');
+        const descEl = card.querySelector('.nearby-desc');
+        if (titleEl) titleEl.textContent = item.title[lang];
+        if (descEl) descEl.textContent = item.desc[lang];
+      });
+
+      document.querySelectorAll<HTMLElement>('[data-faq-idx]').forEach((card) => {
+        const idx = Number(card.dataset.faqIdx);
+        const item = SITE.faq[idx];
+        if (!item) return;
+        const qEl = card.querySelector('.faq-q');
+        const aEl = card.querySelector('.faq-a');
+        if (qEl) qEl.textContent = item.q[lang];
+        if (aEl) aEl.textContent = item.a[lang];
+      });
+
+      document.querySelectorAll<HTMLElement>('.ph-label').forEach((el) => {
+        el.textContent = t.photoSoon;
+      });
+
+      document.querySelectorAll<HTMLButtonElement>('.lang-btn').forEach((btn) => {
+        if (btn.dataset.lang === lang) {
+          btn.className = 'lang-btn px-2.5 py-1 rounded-full bg-ink text-surface transition-all';
+        } else {
+          btn.className = 'lang-btn px-2.5 py-1 rounded-full text-muted hover:text-ink transition-all';
+        }
+      });
+
+      renderActivePlaceInfo();
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('.lang-btn').forEach((btn) => {
+      btn.addEventListener('click', () => setLanguage(btn.dataset.lang!));
+    });
+
+    updateCarouselLayout();
+  </script>
+</Layout>
